@@ -1,8 +1,9 @@
 
 import { combineReducers } from "redux";
 import titlesReducer from "./titles";
-import { FETCH_TITLES, SAVE_MOVIE } from "../Actions/actionTypes";
+import moviesReducer from "./movies";
+import movies from "./movies";
 
-const rootReducer = combineReducers({ titles: titlesReducer });
+const rootReducer = combineReducers({ titles: titlesReducer, movies: moviesReducer });
 
 export default rootReducer;

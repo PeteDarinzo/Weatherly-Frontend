@@ -15,7 +15,6 @@ const MovieList = () => {
 
   useEffect(() => {
     async function loadTitles() {
-      console.log("dispatching fetch titles");
       await dispatch(fetchTitlesFromAPI("peter"));
       setIsLoading(false);
     }

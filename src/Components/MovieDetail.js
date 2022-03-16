@@ -1,18 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams, useHistory } from "react-router-dom";
+import { fetchMovieFromAPI } from "../Actions/actions";
+
 import Button from '@mui/material/Button';
 
 
-const MovieDetail = ({ title, year, rating, runtime, genre, plot, poster, }) => {
+const MovieDetail = () => {
+
+  const { movieId } = useParams();
+  let movie = useSelector(store => store.movies[movieId]);
+
+  const dispatch = useDispatch();
+
+
+  useEffect(() => {
+
+    async function getMovie() {
+      console.log("dispatching get movie");
+      await dispatch(fetchMovieFromAPI(movieId));
+    }
+
+    if (!movie) {
+      console.log("getting movie");
+      getMovie();
+    }
+
+  }, [dispatch, movieId, movie]);
+
+
+  if (!movie) return (<b>Loading...</b>)
 
   return (
     <div>
-      <img src={poster} />
-      <h1>{title}</h1>
-      <p>{year}</p>
-      <p>{genre}</p>
-      <p>{rating}</p>
-      <p>{runtime}</p>
-      <p>{plot}</p>
+      <img src={movie.Poster} />
+      <h1>{movie.Title}</h1>
+      <p>{movie.Year}</p>
+      <p>{movie.Genre}</p>
+      <p>{movie.imdbRating}</p>
+      <p>{movie.Runtime}</p>
+      <p>{movie.Plot}</p>
       <Button variant="contained" color="error">
         Remove
       </Button>

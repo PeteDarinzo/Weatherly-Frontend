@@ -2,7 +2,8 @@ import axios from "axios";
 import {
   SAVE_MOVIE,
   FETCH_TITLES,
-  DELETE_MOVIE
+  DELETE_MOVIE,
+  FETCH_MOVIE
 } from "./actionTypes";
 
 const API_URL = "http://localhost:3001";
@@ -36,9 +37,7 @@ function saveMovie(movie) {
 
 export function fetchTitlesFromAPI(username) {
   return async function (dispatch) {
-    console.log("requesting titles");
     const res = await axios.get(`${API_URL}/users/${username}/movies`);
-    console.log("Titles:", res.data);
     dispatch(getTitles(res.data));
   }
 }
@@ -47,5 +46,23 @@ function getTitles(titles) {
   return {
     type: FETCH_TITLES,
     titles
+  }
+}
+
+
+/*** FETCH MOVIE ***/
+
+export function fetchMovieFromAPI(movieId) {
+  return async function (dispatch) {
+    const res = await axios.get(`${API_URL}/movies/${movieId}`);
+    const movie = res.data
+    dispatch(getMovie(movie));
+  }
+}
+
+function getMovie(movie) {
+  return {
+    type: FETCH_MOVIE,
+    movie
   }
 }
