@@ -8,7 +8,6 @@ import { fetchTitlesFromAPI } from "../Actions/actions";
 const MovieList = () => {
 
   const titles = useSelector(store => store.titles);
-
   const dispatch = useDispatch();
 
   const [isLoading, setIsLoading] = useState(true);
@@ -24,6 +23,8 @@ const MovieList = () => {
   }, [dispatch, isLoading]);
 
   if (isLoading) return (<b>Loading...</b>);
+
+  if (!titles.length) return (<b>No movies to show!</b>);
 
   return (
     <Container maxWidth="sm">

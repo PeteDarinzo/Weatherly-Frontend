@@ -6,13 +6,12 @@ import Button from '@mui/material/Button';
 
 
 
-const SignupForm = ({ register }) => {
+const LoginForm = ({ login }) => {
 
 
   const initialState = {
     username: "",
     password: "",
-    zipCode: ""
   }
 
   const [formData, setFormData] = useState(initialState);
@@ -27,14 +26,14 @@ const SignupForm = ({ register }) => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    register({ ...formData });
+    login({ ...formData });
     setFormData(initialState);
   }
 
 
   return (
     <div>
-      <Typography variant="h3">Sign Up</Typography>
+      <Typography variant="h3">Log In</Typography>
       <Box
         component="form"
         onSubmit={handleSubmit}
@@ -45,11 +44,10 @@ const SignupForm = ({ register }) => {
         autoComplete="off">
         <TextField name="username" id="username" label="Username" variant="standard" value={formData.username} onChange={handleChange} />
         <TextField name="password" id="password" label="Password" variant="standard" value={formData.password} onChange={handleChange} />
-        <TextField name="zipCode" id="zip-code" label="Zip Code" variant="standard" value={formData.zipCode} onChange={handleChange} />
         <Button onClick={handleSubmit} variant="outlined">Submit</Button>
       </Box>
     </div>
   );
 }
 
-export default SignupForm;
+export default LoginForm;

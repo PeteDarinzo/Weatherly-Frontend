@@ -4,15 +4,19 @@ import Home from "./Home";
 import MovieDetail from "./MovieDetail";
 import SignupForm from "./SignupForm";
 import MovieList from "./MovieList";
+import HomeAnon from "./HomeAnon";
+import LoginForm from "./LoginForm";
 
 
-const Routes = ({ getMovies, addUser, searchResults }) => {
+const Routes = ({ getMovies, searchResults, register, login, loggedIn }) => {
 
   return (
     <Switch>
 
       <Route exact path="/">
-        <Home getMovies={getMovies} searchResults={searchResults} />
+        {loggedIn ? (<Home getMovies={getMovies} searchResults={searchResults} />)
+          : <HomeAnon />}
+
       </Route>
 
       <Route exact path="/movies" >
@@ -24,7 +28,11 @@ const Routes = ({ getMovies, addUser, searchResults }) => {
       </Route>
 
       <Route exact path="/signup">
-        <SignupForm addUser={addUser} />
+        <SignupForm register={register} />
+      </Route>
+
+      <Route exact path="/login">
+        <LoginForm login={login} />
       </Route>
 
       <Redirect to="/" />

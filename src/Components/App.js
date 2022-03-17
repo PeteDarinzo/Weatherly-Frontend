@@ -1,5 +1,6 @@
 import './App.css';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import NavBar from "./NavBar";
 import axios from "axios";
 import Routes from "./Routes";
@@ -9,46 +10,20 @@ const API_URL = "http://localhost:3001";
 
 function App() {
 
-  const [searchResults, setSearchResults] = useState({
-    "Title": "Frozen",
-    "Year": "2013",
-    "Rated": "PG",
-    "Released": "27 Nov 2013",
-    "Runtime": "102 min",
-    "Genre": "Animation, Adventure, Comedy",
-    "Director": "Chris Buck, Jennifer Lee",
-    "Writer": "Jennifer Lee, Hans Christian Andersen, Chris Buck",
-    "Actors": "Kristen Bell, Idina Menzel, Jonathan Groff",
-    "Plot": "When the newly crowned Queen Elsa accidentally uses her power to turn things into ice to curse her home in infinite winter, her sister Anna teams up with a mountain man, his playful reindeer, and a snowman to change the weather condi",
-    "Language": "English, Norwegian",
-    "Country": "United States",
-    "Awards": "Won 2 Oscars. 82 wins & 60 nominations total",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BMTQ1MjQwMTE5OF5BMl5BanBnXkFtZTgwNjk3MTcyMDE@._V1_SX300.jpg",
-    "Ratings": [
-      {
-        "Source": "Internet Movie Database",
-        "Value": "7.4/10"
-      },
-      {
-        "Source": "Rotten Tomatoes",
-        "Value": "90%"
-      },
-      {
-        "Source": "Metacritic",
-        "Value": "75/100"
-      }
-    ],
-    "Metascore": "75",
-    "imdbRating": "7.4",
-    "imdbVotes": "605,423",
-    "imdbID": "tt2294629",
-    "Type": "movie",
-    "DVD": "18 Mar 2014",
-    "BoxOffice": "$400,953,009",
-    "Production": "N/A",
-    "Website": "N/A",
-    "Response": "True"
-  });
+  const history = useHistory();
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [userToken, setUserToken] = useState("");
+  const [userCredentials, setUserCredentials] = useState("");
+  const [searchResults, setSearchResults] = useState({});
+
+  useEffect(() => {
+    if (localStorage.getItem("weatherlyToken")) {
+      const token = JSON.parse(localStorage.getItem("weatherlyToken"));
+      setUserToken(token);
+    }
+  }, []);
+
 
   /** Search OMDB for movies */
   async function getMovies(title) {
@@ -57,30 +32,47 @@ function App() {
   }
 
   /** Register a new users */
-  async function addUser(user) {
+  async function register(user) {
     const userObj = {
       username: user.username,
       password: user.password,
       zipCode: user.zipCode
     }
+    // setIsLoading(true);
     const res = await axios.post(`${API_URL}/auth/register`, userObj);
+    const token = res.data.token;
+    localStorage.setItem("weatherlyToken", JSON.stringify(token));
+    setUserToken(token);
+    history.push("/");
   }
 
-  // async function saveMovie(movie) {
-  //   const movieObj = {
-  //     id: movie.id,
-  //     title: movie.title,
-  //     posterUrl: movie.posterUrl
-  //   }
-  //   const { id, title, posterUrl, plot } = movie;
-  //   dispatch(sendMovieToAPI(1, id, title, posterUrl, plot));
-  //   const res = await axios.post(`${API_URL}/movies/save`, movieObj);
-  // }
+  async function login(user) {
+    const userObj = {
+      username: user.username,
+      password: user.password,
+    }
+    const res = await axios.post(`${API_URL}/auth/token`, userObj);
+    const token = res.data.token;
+    localStorage.setItem("weatherlyToken", JSON.stringify(token));
+    setUserToken(token);
+    history.push("/");
+  }
+
+  function logout() {
+    localStorage.removeItem("weatherlyToken");
+    setUserToken("");
+  }
 
   return (
     <div>
-      <NavBar />
-      <Routes getMovies={getMovies} addUser={addUser} searchResults={searchResults} />
+      <NavBar loggedIn={userToken} logout={logout} />
+      <Routes
+        getMovies={getMovies}
+        searchResults={searchResults}
+        register={register}
+        login={login}
+        loggedIn={userToken}
+      />
     </div>
   );
 }

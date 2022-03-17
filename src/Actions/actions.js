@@ -16,20 +16,34 @@ const API_URL = "http://localhost:3001";
 
 /*** SAVE MOVIE ***/
 
-export function sendMovieToAPI(userId, movieId, title, posterUrl) {
+export function sendMovieToAPI(movie) {
   const movieObj = {
-    id: movieId,
-    title,
-    posterUrl
+    id: movie.imdbID,
+    title: movie.Title,
+    posterUrl: movie.Poster
   }
+  let username = "peter";
   return async function (dispatch) {
-    await Promise.all([
-      axios.post(`${API_URL}/movies/save`, movieObj),
-      axios.post(`${API_URL}/users/${userId}/movies`, { movieId }),
-    ]);
-    dispatch(saveMovie(movieObj));
+    axios.post(`${API_URL}/movies/save`, movieObj);
+    axios.post(`${API_URL}/users/${username}/movies`, { movieId: movie.imdbID });
+    dispatch(saveMovie(movie));
   }
 }
+
+// export function sendMovieToAPI(userId, movieId, title, posterUrl) {
+//   const movieObj = {
+//     id: movieId,
+//     title,
+//     posterUrl
+//   }
+//   return async function (dispatch) {
+//     await Promise.all([
+//       axios.post(`${API_URL}/movies/save`, movieObj),
+//       axios.post(`${API_URL}/users/${userId}/movies`, { movieId }),
+//     ]);
+//     dispatch(saveMovie(movieObj));
+//   }
+// }
 
 function saveMovie(movie) {
   return {
@@ -73,6 +87,11 @@ function getMovie(movie) {
 }
 
 /*** DELETE MOVIE ***/
+
+/**
+ * DELETE second param is options
+ * https://masteringjs.io/tutorials/axios/delete-with-body#:~:text=To%20send%20a%20request%20body,should%20set%20the%20data%20option.&text=Remember%20that%20the%202nd%20parameter,like%20you%20can%20with%20axios.
+ */
 
 export function deleteFromWatchList(userId, movieId) {
   return async function (dispatch) {

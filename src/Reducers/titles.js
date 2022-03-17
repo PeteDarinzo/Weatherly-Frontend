@@ -1,13 +1,13 @@
 import {
   DELETE_MOVIE,
-  FETCH_TITLES, SAVE_MOVIE
+  FETCH_TITLES,
+  SAVE_MOVIE
 } from "../Actions/actionTypes";
 
 
 function makeTitleFromMovie({ id, title, posterUrl }) {
   return { id, title, posterUrl };
 }
-
 
 const INITIAL_STATE = [];
 

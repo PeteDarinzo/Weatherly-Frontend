@@ -8,7 +8,7 @@ const SearchList = ({ movie }) => {
   return (
     <Container maxWidth="sm">
       <Stack spacing={2}>
-        <SearchCard id={movie.imdbID} title={movie.Title} posterUrl={movie.Poster} />
+        {Object.keys(movie).length ? (<SearchCard movie={movie} />) : (<b>Search for some movies!</b>)}
       </Stack>
     </Container>
   );

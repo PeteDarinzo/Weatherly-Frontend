@@ -14,7 +14,7 @@ import { NavLink } from "react-router-dom";
 
 
 
-const NavBar = () => {
+const NavBar = ({ loggedIn, logout }) => {
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -71,11 +71,18 @@ const NavBar = () => {
                 </Menu>
               </>)
               : (<>
-                <Button component={NavLink} to="/" color="inherit">Forecast</Button>
-                <Button component={NavLink} to="/movies" color="inherit">Movies</Button>
-                <Button component={NavLink} to="/signup" color="inherit">Profile</Button>
-                <Button component={NavLink} to="/signup" color="inherit">Signup</Button>
-                <Button color="inherit">Login</Button>
+                {loggedIn ? (
+                  <>
+                    <Button component={NavLink} to="/" color="inherit">Forecast</Button>
+                    <Button component={NavLink} to="/movies" color="inherit">Movies</Button>
+                    <Button component={NavLink} to="/" color="inherit">Profile</Button>
+                    <Button component={NavLink} to="/login" onClick={logout} color="inherit">Logout</Button>
+                  </>)
+                  : (<>
+                    <Button component={NavLink} to="/signup" color="inherit">Signup</Button>
+                    <Button component={NavLink} to="/login" color="inherit">Login</Button>
+                  </>
+                  )}
               </>)
             }
           </div>

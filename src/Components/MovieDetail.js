@@ -28,7 +28,7 @@ const MovieDetail = () => {
   }, [dispatch, movieId, movie]);
 
   function handleClick() {
-    dispatch(deleteFromWatchList(1, movieId));
+    dispatch(deleteFromWatchList("peter", movieId));
     history.push("/");
   }
 
