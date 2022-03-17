@@ -77,7 +77,8 @@ const NavBar = ({ loggedIn, logout }) => {
                     <Button component={NavLink} to="/movies" color="inherit">Movies</Button>
                     <Button component={NavLink} to="/" color="inherit">Profile</Button>
                     <Button component={NavLink} to="/login" onClick={logout} color="inherit">Logout</Button>
-                  </>)
+                  </>
+                  )
                   : (<>
                     <Button component={NavLink} to="/signup" color="inherit">Signup</Button>
                     <Button component={NavLink} to="/login" color="inherit">Login</Button>
