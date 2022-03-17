@@ -50,11 +50,13 @@ function App() {
     "Response": "True"
   });
 
+  /** Search OMDB for movies */
   async function getMovies(title) {
-    const res = await axios.post(`${API_URL}/movies`, { title });
+    const res = await axios.get(`${API_URL}/movies/title/${title}`);
     setSearchResults(res.data);
   }
 
+  /** Register a new users */
   async function addUser(user) {
     const userObj = {
       username: user.username,
@@ -64,19 +66,21 @@ function App() {
     const res = await axios.post(`${API_URL}/auth/register`, userObj);
   }
 
-  async function saveMovie(movie) {
-    const movieObj = {
-      id: movie.id,
-      title: movie.title,
-      posterUrl: movie.posterUrl
-    }
-    const res = await axios.post(`${API_URL}/movies/save`, movieObj);
-  }
+  // async function saveMovie(movie) {
+  //   const movieObj = {
+  //     id: movie.id,
+  //     title: movie.title,
+  //     posterUrl: movie.posterUrl
+  //   }
+  //   const { id, title, posterUrl, plot } = movie;
+  //   dispatch(sendMovieToAPI(1, id, title, posterUrl, plot));
+  //   const res = await axios.post(`${API_URL}/movies/save`, movieObj);
+  // }
 
   return (
     <div>
       <NavBar />
-      <Routes getMovies={getMovies} addUser={addUser} saveMovie={saveMovie} searchResults={searchResults} />
+      <Routes getMovies={getMovies} addUser={addUser} searchResults={searchResults} />
     </div>
   );
 }

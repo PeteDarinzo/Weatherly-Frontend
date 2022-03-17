@@ -6,13 +6,13 @@ import SignupForm from "./SignupForm";
 import MovieList from "./MovieList";
 
 
-const Routes = ({ getMovies, addUser, saveMovie, searchResults }) => {
+const Routes = ({ getMovies, addUser, searchResults }) => {
 
   return (
     <Switch>
 
       <Route exact path="/">
-        <Home getMovies={getMovies} searchResults={searchResults} saveMovie={saveMovie} />
+        <Home getMovies={getMovies} searchResults={searchResults} />
       </Route>
 
       <Route exact path="/movies" >

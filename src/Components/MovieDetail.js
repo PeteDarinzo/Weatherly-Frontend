@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { fetchMovieFromAPI } from "../Actions/actions";
+import { deleteFromWatchList } from "../Actions/actions";
 
 import Button from '@mui/material/Button';
 
@@ -12,21 +13,24 @@ const MovieDetail = () => {
   let movie = useSelector(store => store.movies[movieId]);
 
   const dispatch = useDispatch();
-
+  const history = useHistory();
 
   useEffect(() => {
 
     async function getMovie() {
-      console.log("dispatching get movie");
       await dispatch(fetchMovieFromAPI(movieId));
     }
 
     if (!movie) {
-      console.log("getting movie");
       getMovie();
     }
 
   }, [dispatch, movieId, movie]);
+
+  function handleClick() {
+    dispatch(deleteFromWatchList(1, movieId));
+    history.push("/");
+  }
 
 
   if (!movie) return (<b>Loading...</b>)
@@ -40,7 +44,7 @@ const MovieDetail = () => {
       <p>{movie.imdbRating}</p>
       <p>{movie.Runtime}</p>
       <p>{movie.Plot}</p>
-      <Button variant="contained" color="error">
+      <Button onClick={handleClick} variant="contained" color="error">
         Remove
       </Button>
     </div>

@@ -11,18 +11,23 @@ const API_URL = "http://localhost:3001";
 
 /*** SEARCH MOVIES ***/
 
-export function searchMovies() {
 
-}
 
 
 /*** SAVE MOVIE ***/
 
-export function sendMovieToAPI(userId, movieId, title, poster, plot) {
+export function sendMovieToAPI(userId, movieId, title, posterUrl) {
+  const movieObj = {
+    id: movieId,
+    title,
+    posterUrl
+  }
   return async function (dispatch) {
-    const res1 = await axios.post(`${API_URL}/movies/save`, { movieId, title, poster, plot });
-    const res2 = await axios.post(`${API_URL}/users/movies`, { userId, movieId });
-    dispatch(saveMovie(res1.data));
+    await Promise.all([
+      axios.post(`${API_URL}/movies/save`, movieObj),
+      axios.post(`${API_URL}/users/${userId}/movies`, { movieId }),
+    ]);
+    dispatch(saveMovie(movieObj));
   }
 }
 
@@ -55,7 +60,7 @@ function getTitles(titles) {
 export function fetchMovieFromAPI(movieId) {
   return async function (dispatch) {
     const res = await axios.get(`${API_URL}/movies/${movieId}`);
-    const movie = res.data
+    const movie = res.data;
     dispatch(getMovie(movie));
   }
 }
@@ -66,3 +71,21 @@ function getMovie(movie) {
     movie
   }
 }
+
+/*** DELETE MOVIE ***/
+
+export function deleteFromWatchList(userId, movieId) {
+  return async function (dispatch) {
+    await axios.delete(`${API_URL}/users/${userId}/movies`, { data: { movieId } });
+    dispatch(deleteMovie(movieId));
+  }
+
+  function deleteMovie(movieId) {
+    return {
+      type: DELETE_MOVIE,
+      movieId
+    }
+  }
+
+}
+
