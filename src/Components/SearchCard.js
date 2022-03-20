@@ -9,12 +9,13 @@ import Typography from '@mui/material/Typography';
 import { sendMovieToAPI } from "../Actions/actions";
 
 // const SearchCard = ({ id, title, posterUrl }) => {
-const SearchCard = ({ movie }) => {
+const SearchCard = ({ movie, saveMovie }) => {
 
   const dispatch = useDispatch();
 
   function handleClick() {
-    dispatch(sendMovieToAPI(movie));
+    saveMovie(movie);
+    // dispatch(sendMovieToAPI(movie));
   }
 
   // function handleClick() {

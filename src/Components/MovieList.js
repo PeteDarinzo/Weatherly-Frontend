@@ -5,7 +5,7 @@ import Stack from '@mui/material/Stack';
 import { useSelector, useDispatch } from "react-redux";
 import { fetchTitlesFromAPI } from "../Actions/actions";
 
-const MovieList = () => {
+const MovieList = ({ username }) => {
 
   const titles = useSelector(store => store.titles);
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const MovieList = () => {
 
   useEffect(() => {
     async function loadTitles() {
-      await dispatch(fetchTitlesFromAPI("peter"));
+      await dispatch(fetchTitlesFromAPI(username));
       setIsLoading(false);
     }
 

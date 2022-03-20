@@ -1,4 +1,5 @@
 import axios from "axios";
+import WeatherlyApi from "../Components/Api";
 import {
   SAVE_MOVIE,
   FETCH_TITLES,
@@ -16,16 +17,15 @@ const API_URL = "http://localhost:3001";
 
 /*** SAVE MOVIE ***/
 
-export function sendMovieToAPI(movie) {
+export function sendMovieToAPI(movie, username) {
   const movieObj = {
     id: movie.imdbID,
     title: movie.Title,
     posterUrl: movie.Poster
   }
-  let username = "peter";
   return async function (dispatch) {
-    axios.post(`${API_URL}/movies/save`, movieObj);
-    axios.post(`${API_URL}/users/${username}/movies`, { movieId: movie.imdbID });
+    await WeatherlyApi.saveMovie(movieObj); // must execute first
+    await WeatherlyApi.addToWatchList(username, movieObj.id);
     dispatch(saveMovie(movie));
   }
 }
@@ -56,8 +56,9 @@ function saveMovie(movie) {
 
 export function fetchTitlesFromAPI(username) {
   return async function (dispatch) {
-    const res = await axios.get(`${API_URL}/users/${username}/movies`);
-    dispatch(getTitles(res.data));
+    // const res = await axios.get(`${API_URL}/users/${username}/movies`);
+    const titles = await WeatherlyApi.getAllTitles(username);
+    dispatch(getTitles(titles));
   }
 }
 

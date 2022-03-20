@@ -8,19 +8,19 @@ import HomeAnon from "./HomeAnon";
 import LoginForm from "./LoginForm";
 
 
-const Routes = ({ getMovies, searchResults, register, login, loggedIn }) => {
+const Routes = ({ getMovies, searchResults, register, login, loggedIn, saveMovie, username}) => {
 
   return (
     <Switch>
 
       <Route exact path="/">
-        {loggedIn ? (<Home getMovies={getMovies} searchResults={searchResults} />)
+        {loggedIn ? (<Home getMovies={getMovies} searchResults={searchResults} saveMovie={saveMovie} />)
           : <HomeAnon />}
 
       </Route>
 
       <Route exact path="/movies" >
-        <MovieList />
+        <MovieList username={username} />
       </Route>
 
       <Route exact path="/movies/:movieId">
