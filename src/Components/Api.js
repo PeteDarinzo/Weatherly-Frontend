@@ -1,16 +1,17 @@
+
 import axios from "axios";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
+
 /** API Class 
  * 
- * Static class tying togehter methods used to get/send to the server, and APIs
+ * Static class tying togehter methods used to get/send to the backend, and APIs
  * 
  */
 
 class WeatherlyApi {
 
-  // omdbToken
   static token;
 
   static async request(endpoint, data = {}, method = "get") {
@@ -34,7 +35,6 @@ class WeatherlyApi {
       throw Array.isArray(message) ? message : [message];
     }
   }
-
 
   /** search movies */
 
@@ -61,7 +61,6 @@ class WeatherlyApi {
     return token;
   }
 
-
   /** get all of an existing user's titles */
 
   static async getAllTitles(username) {
@@ -81,6 +80,12 @@ class WeatherlyApi {
     return res;
   }
 
+  /** Get an existing user's profile data */
+
+  static async getUserData(username) {
+    let res = await this.request(`users/${username}`);
+    return res.user;
+  }
 }
 
 export default WeatherlyApi;

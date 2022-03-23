@@ -4,10 +4,20 @@ import {
   SAVE_MOVIE,
   FETCH_TITLES,
   DELETE_MOVIE,
-  FETCH_MOVIE
+  FETCH_MOVIE,
+  GET_FORECAST,
+  UPDATE_USER
 } from "./actionTypes";
+import CircularlyLinkedList from "../Components/CircularLinkedList";
+
+const OPEN_WEATHER_API_KEY = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
+
+/** circularly linked list containing days of the week */
+const DAYS_OF_WEEK = new CircularlyLinkedList(["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]);
 
 const API_URL = "http://localhost:3001";
+
+const OPEN_WEATHER_URL = "https://api.openweathermap.org/data/2.5/onecall?"
 
 
 /*** SEARCH MOVIES ***/
@@ -56,7 +66,6 @@ function saveMovie(movie) {
 
 export function fetchTitlesFromAPI(username) {
   return async function (dispatch) {
-    // const res = await axios.get(`${API_URL}/users/${username}/movies`);
     const titles = await WeatherlyApi.getAllTitles(username);
     dispatch(getTitles(titles));
   }
@@ -109,3 +118,48 @@ export function deleteFromWatchList(userId, movieId) {
 
 }
 
+/** FETCH FORECAST */
+
+export function fetchForecastFromAPI(lat, lon, units) {
+  return async function (dispatch) {
+    const res = await axios.get(OPEN_WEATHER_URL, {
+      params: {
+        lat,
+        lon,
+        exclude: "minutely,hourly,alerts",
+        appId: OPEN_WEATHER_API_KEY,
+        units
+      }
+    });
+    const d = (new Date()).toString();
+    const today = d.slice(0, 3);
+    let days = DAYS_OF_WEEK.traverse(today, 8);
+    const forecast = res.data.daily.map(day => {
+      day.name = days.shift();
+      return day;
+    });
+    dispatch(getForecast(forecast));
+  }
+}
+
+function getForecast(forecast) {
+  return {
+    type: GET_FORECAST,
+    forecast
+  }
+}
+
+/** UPDATE USER */
+
+// export function sendUserDataToApi(userData) {
+//   // return async function(dispatch) {
+
+//   // }
+// }
+
+export function saveUserData(userData) {
+  return {
+    type: UPDATE_USER,
+    userData
+  }
+}

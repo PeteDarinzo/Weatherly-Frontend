@@ -5,7 +5,7 @@ import NavBar from "./NavBar";
 import Routes from "./Routes";
 import WeatherlyApi from './Api';
 import jwt_decode from "jwt-decode";
-import { sendMovieToAPI } from '../Actions/actions';
+import { saveUserData, sendMovieToAPI } from '../Actions/actions';
 import { useDispatch } from "react-redux";
 
 function App() {
@@ -15,23 +15,32 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [userToken, setUserToken] = useState("");
-  const [userCredentials, setUserCredentials] = useState("");
+  const [userData, setUserData] = useState({});
   const [searchResults, setSearchResults] = useState({});
+  const [signupError, setSignupError] = useState("");
 
   useEffect(() => {
     if (localStorage.getItem("weatherlyToken")) {
       const token = JSON.parse(localStorage.getItem("weatherlyToken"));
-      // WeatherlyApi.token = token; // set token for future reqeusts
+      WeatherlyApi.token = token; // set token for future reqeusts
       setUserToken(token);
     }
   }, []);
 
   useEffect(() => {
-    if (userToken) {
+
+    async function loadUserData() {
       const decoded = jwt_decode(userToken);
       const username = decoded.username;
-      setUserCredentials(username);
+      const userData = await WeatherlyApi.getUserData(username);
+      setUserData(userData);
+      dispatch(saveUserData(userData));
     }
+
+    if (userToken) loadUserData();
+
+    setSignupError("");
+
   }, [userToken]);
 
   /** Search OMDB for movies */
@@ -41,26 +50,19 @@ function App() {
   }
 
 
-  /** Search OMDB for movies */
-  // async function getMovies(title) {
-  //   const res = await axios.get(`${API_URL}/movies/title/${title}`);
-  //   setSearchResults(res.data);
-  // }
+  /** Register a new user */
 
-  /** Register a new users */
-  async function register(user) {
-    const userObj = {
-      username: user.username,
-      password: user.password,
-      zipCode: user.zipCode
+  async function register(userData) {
+    try {
+      // setIsLoading(true);
+      const token = await WeatherlyApi.register(userData);
+      localStorage.setItem("weatherlyToken", JSON.stringify(token));
+      setUserToken(token);
+      history.push("/");
+    } catch (err) {
+      setSignupError(err[0]);
+      // setIsLoading(false);
     }
-    // setIsLoading(true);
-    const token = await WeatherlyApi.register(userObj);
-    // const res = await axios.post(`${API_URL}/auth/register`, userObj);
-    // const token = res.data.token;
-    localStorage.setItem("weatherlyToken", JSON.stringify(token));
-    setUserToken(token);
-    history.push("/");
   }
 
   async function login(user) {
@@ -69,8 +71,6 @@ function App() {
       password: user.password,
     }
     const token = await WeatherlyApi.getToken(userObj);
-    // const res = await axios.post(`${API_URL}/auth/token`, userObj);
-    // const token = res.data.token;
     localStorage.setItem("weatherlyToken", JSON.stringify(token));
     setUserToken(token);
     history.push("/");
@@ -82,7 +82,7 @@ function App() {
   }
 
   function saveMovie(movie) {
-    dispatch(sendMovieToAPI(movie, userCredentials));
+    dispatch(sendMovieToAPI(movie, userData.username));
   }
 
   return (
@@ -95,7 +95,7 @@ function App() {
         login={login}
         loggedIn={userToken}
         saveMovie={saveMovie}
-        username={userCredentials}
+        username={userData.username}
       />
     </div>
   );

@@ -6,7 +6,6 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { sendMovieToAPI } from "../Actions/actions";
 
 // const SearchCard = ({ id, title, posterUrl }) => {
 const SearchCard = ({ movie, saveMovie }) => {
@@ -37,7 +36,7 @@ const SearchCard = ({ movie, saveMovie }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button onClick={handleClick} size="small">Save</Button>
+        <Button onClick={handleClick} size="small" variant="contained">Save</Button>
       </CardActions>
     </Card>
   );
