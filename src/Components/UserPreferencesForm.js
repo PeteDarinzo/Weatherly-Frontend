@@ -22,7 +22,7 @@ const useStyles = makeStyles({
   }
 });
 
-const UserPreferencesForm = ({ minTemp, maxTemp, units, thunderstorm, drizzle, rain, snow, overcast }) => {
+const UserPreferencesForm = ({ minTemp, maxTemp, units, thunderstorm, drizzle, rain, snow, overcast, updateUserPreferences }) => {
 
   const classes = useStyles();
 
@@ -45,7 +45,6 @@ const UserPreferencesForm = ({ minTemp, maxTemp, units, thunderstorm, drizzle, r
       ...formData,
       [name]: value
     }));
-    console.log(formData);
   }
 
   function handleTempChange(tempArray) {
@@ -61,7 +60,10 @@ const UserPreferencesForm = ({ minTemp, maxTemp, units, thunderstorm, drizzle, r
       ...formData,
       [e.target.name]: e.target.checked
     });
-    console.log(formData);
+  }
+
+  function handleSubmit() {
+    updateUserPreferences(formData);
   }
 
   return (
@@ -116,7 +118,7 @@ const UserPreferencesForm = ({ minTemp, maxTemp, units, thunderstorm, drizzle, r
           />
         </FormGroup>
       </FormControl>
-      <Button onClick={() => console.log("hi")} variant="contained" color="secondary">Save Preferences</Button>
+      <Button onClick={handleSubmit} variant="contained" color="secondary">Save Preferences</Button>
     </FormControl >
   )
 }
