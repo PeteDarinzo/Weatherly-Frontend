@@ -86,6 +86,14 @@ class WeatherlyApi {
     let res = await this.request(`users/${username}`);
     return res.user;
   }
+
+  /** Update an existing user's location */
+
+  static async updateUser(username, userData) {
+    let res = await this.request(`users/${username}`, userData, "patch");
+    return res.user;
+  }
+
 }
 
 export default WeatherlyApi;

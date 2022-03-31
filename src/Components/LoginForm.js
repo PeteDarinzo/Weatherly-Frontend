@@ -44,7 +44,7 @@ const LoginForm = ({ login }) => {
         autoComplete="off">
         <TextField name="username" id="username" label="Username" variant="standard" value={formData.username} onChange={handleChange} />
         <TextField name="password" id="password" label="Password" variant="standard" value={formData.password} onChange={handleChange} />
-        <Button onClick={handleSubmit} variant="outlined">Submit</Button>
+        <Button type="submit" onClick={handleSubmit} variant="outlined">Submit</Button>
       </Box>
     </div>
   );

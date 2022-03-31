@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import { countryList, countryListAlpha2 } from "../countryData";
 import { makeStyles } from "@mui/styles";
@@ -21,7 +22,6 @@ const useStyles = makeStyles({
 const SignupForm = ({ register }) => {
 
   const classes = useStyles();
-
 
   const initialState = {
     username: "",
@@ -50,48 +50,50 @@ const SignupForm = ({ register }) => {
   return (
     <Container>
       <Typography variant="h3">Sign Up</Typography>
-      <FormControl fullWidth>
-        <TextField
-          className={classes.field}
-          name="username"
-          id="username"
-          label="Username"
-          variant="outlined"
-          value={formData.username}
-          onChange={handleChange}
-          fullWidth
-          required />
-        <TextField
-          className={classes.field}
-          name="password"
-          id="password"
-          label="Password"
-          variant="outlined"
-          value={formData.password}
-          onChange={handleChange}
-          required />
-        <TextField
-          className={classes.field}
-          name="postalCode"
-          id="postal-code"
-          label="Postal Code"
-          variant="outlined"
-          value={formData.zipCode}
-          onChange={handleChange}
-          required />
-        <TextField
-          className={classes.field}
-          name="countryCode"
-          id="country-code"
-          value={formData.countryCode}
-          label="Country"
-          onChange={handleChange}
-          select
-          fullWidth>
-          {countryList.map(country => <MenuItem key={countryListAlpha2[country]} value={countryListAlpha2[country]}>{country}</MenuItem>)}
-        </TextField>
-        <Button onClick={handleSubmit} variant="contained">Submit</Button>
-      </FormControl>
+      <form onSubmit={handleSubmit}>
+        <FormControl fullWidth onSubmit={handleSubmit}>
+          <TextField
+            className={classes.field}
+            name="username"
+            id="username"
+            label="Username"
+            variant="outlined"
+            value={formData.username}
+            onChange={handleChange}
+            fullWidth
+            required />
+          <TextField
+            className={classes.field}
+            name="password"
+            id="password"
+            label="Password"
+            variant="outlined"
+            value={formData.password}
+            onChange={handleChange}
+            required />
+          <TextField
+            className={classes.field}
+            name="postalCode"
+            id="postal-code"
+            label="Postal Code"
+            variant="outlined"
+            value={formData.zipCode}
+            onChange={handleChange}
+            required />
+          <TextField
+            className={classes.field}
+            name="countryCode"
+            id="country-code"
+            value={formData.countryCode}
+            label="Country"
+            onChange={handleChange}
+            select
+            fullWidth>
+            {countryList.map(country => <MenuItem key={countryListAlpha2[country]} value={countryListAlpha2[country]}>{country}</MenuItem>)}
+          </TextField>
+          <Button type="submit" onClick={handleSubmit} variant="contained">Submit</Button>
+        </FormControl>
+      </form>
     </Container >
   );
 }

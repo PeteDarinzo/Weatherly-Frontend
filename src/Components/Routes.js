@@ -7,9 +7,9 @@ import MovieList from "./MovieList";
 import HomeAnon from "./HomeAnon";
 import LoginForm from "./LoginForm";
 import Forecast from "./Forecast";
-import UserProfile from "./UserProfile";
+import UserDashboard from "./UserDashboard";
 
-const Routes = ({ getMovies, searchResults, register, login, loggedIn, saveMovie, username }) => {
+const Routes = ({ getMovies, searchResults, register, login, loggedIn, saveMovie, username, updateUser }) => {
 
   return (
     <Switch>
@@ -32,7 +32,7 @@ const Routes = ({ getMovies, searchResults, register, login, loggedIn, saveMovie
       </Route>
 
       <Route exact path="/profile">
-        <UserProfile />
+        <UserDashboard updateUser={updateUser} />
       </Route>
 
       <Route exact path="/signup">

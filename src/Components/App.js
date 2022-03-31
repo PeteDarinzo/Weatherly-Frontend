@@ -53,6 +53,7 @@ function App() {
   /** Register a new user */
 
   async function register(userData) {
+    const { username, password, postalCode, countryCode } = userData;
     try {
       // setIsLoading(true);
       const token = await WeatherlyApi.register(userData);
@@ -85,6 +86,11 @@ function App() {
     dispatch(sendMovieToAPI(movie, userData.username));
   }
 
+  async function updateUser(data) {
+    const updatedUser = await WeatherlyApi.updateUser(userData.username, data);
+    dispatch(saveUserData(updatedUser));
+  }
+
   return (
     <div>
       <NavBar loggedIn={userToken} logout={logout} />
@@ -96,6 +102,7 @@ function App() {
         loggedIn={userToken}
         saveMovie={saveMovie}
         username={userData.username}
+        updateUser={updateUser}
       />
     </div>
   );

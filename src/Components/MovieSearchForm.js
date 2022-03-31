@@ -31,16 +31,19 @@ const MovieSearchForm = ({ getMovies }) => {
 
   return (
     <Container>
-      <FormControl onSubmit={handleSubmit}>
-        <TextField
-          name="title"
-          id="title"
-          label="Title"
-          variant="standard"
-          value={formData.title}
-          onChange={handleChange} />
-        <Button variant="contained" color="secondary" onClick={handleSubmit}>Search</Button>
-      </FormControl>
+      <form onSubmit={handleSubmit}>
+        <FormControl onSubmit={handleSubmit}>
+          <TextField
+            name="title"
+            id="title"
+            label="Title"
+            variant="standard"
+            value={formData.title}
+            onChange={handleChange} />
+          <Button variant="contained" color="secondary" onClick={handleSubmit}>Search</Button>
+        </FormControl>
+
+      </form>
     </Container>
   );
 }
