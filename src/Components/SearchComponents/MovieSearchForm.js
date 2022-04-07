@@ -42,7 +42,6 @@ const MovieSearchForm = ({ getMovies }) => {
             onChange={handleChange} />
           <Button variant="contained" color="secondary" onClick={handleSubmit}>Search</Button>
         </FormControl>
-
       </form>
     </Container>
   );

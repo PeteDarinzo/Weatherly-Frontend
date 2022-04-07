@@ -14,7 +14,7 @@ const styles = {
   }
 }
 
-const ForecastPaper = ({ day, description, min, max, feelsLike, icon }) => {
+const ForecastPaper = ({ day, description, min, max, feelsLike, icon, units, compatibility}) => {
   return (
     <Paper
       elevation={12}
@@ -45,13 +45,16 @@ const ForecastPaper = ({ day, description, min, max, feelsLike, icon }) => {
         }}
       />
       <Typography>
-        Min: {min}
+        Min: {min} {units}
       </Typography>
       <Typography>
-        Max: {max}
+        Max: {max} {units}
       </Typography>
       <Typography>
-        Feels Like: {feelsLike}
+        Feels Like: {feelsLike} {units}
+      </Typography>
+      <Typography>
+        Good day to watch? {compatibility}
       </Typography>
     </Paper >
   );

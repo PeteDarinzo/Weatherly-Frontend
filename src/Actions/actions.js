@@ -8,7 +8,7 @@ import {
   GET_FORECAST,
   UPDATE_USER
 } from "./actionTypes";
-import CircularlyLinkedList from "../Components/CircularLinkedList";
+import CircularlyLinkedList from "../Components/DataStructures/CircularLinkedList";
 
 const OPEN_WEATHER_API_KEY = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
 
