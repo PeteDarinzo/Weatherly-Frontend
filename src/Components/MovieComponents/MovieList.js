@@ -3,7 +3,7 @@ import MovieCard from "./MovieCard";
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import { useSelector, useDispatch } from "react-redux";
-import { fetchTitlesFromAPI } from "../Actions/actions";
+import { fetchTitlesFromAPI } from "../../Actions/actions";
 
 const MovieList = ({ username }) => {
 

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import { fetchMovieFromAPI } from "../Actions/actions";
-import { deleteFromWatchList } from "../Actions/actions";
+import { fetchMovieFromAPI } from "../../Actions/actions";
+import { deleteFromWatchList } from "../../Actions/actions";
 
 import Button from '@mui/material/Button';
 

@@ -1,13 +1,13 @@
 import React from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 import Home from "./Home";
-import MovieDetail from "./MovieDetail";
+import MovieDetail from "./MovieComponents/MovieDetail";
 import SignupForm from "./SignupForm";
-import MovieList from "./MovieList";
+import MovieList from "./MovieComponents/MovieList";
 import HomeAnon from "./HomeAnon";
 import LoginForm from "./LoginForm";
-import Forecast from "./Forecast";
-import UserDashboard from "./UserDashboard";
+import Forecast from "./ForecastComponents/Forecast";
+import UserDashboard from "./ProfileComponents/UserDashboard";
 
 const Routes = ({ getMovies, searchResults, register, login, loggedIn, saveMovie, username, updateUser }) => {
 

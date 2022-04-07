@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 import Grid from '@mui/material/Grid';
 import ForecastPaper from "./ForecastPaper";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchForecastFromAPI } from "../Actions/actions";
+import { fetchForecastFromAPI } from "../../Actions/actions";
 import { Typography } from "@mui/material";
 
 
