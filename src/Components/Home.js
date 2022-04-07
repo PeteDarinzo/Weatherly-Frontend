@@ -1,13 +1,13 @@
 import React from "react";
-import MovieSearchForm from "./MovieSearchForm";
-import SearchList from "./SearchList";
+import MovieSearchForm from "./SearchComponents/MovieSearchForm";
+import SearchList from "./SearchComponents/SearchList";
 
 const Home = ({ getMovies, searchResults, saveMovie }) => {
 
   return (
     <div>
       <MovieSearchForm getMovies={getMovies} />
-      <SearchList movie={searchResults} saveMovie={saveMovie} />
+      <SearchList movies={searchResults} saveMovie={saveMovie} />
     </div>
   );
 }

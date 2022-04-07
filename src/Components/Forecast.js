@@ -29,7 +29,7 @@ const Forecast = () => {
         <Button onClick={handleClick} variant="contained">Refresh</Button>
       </Box>
       <Typography variant="h3">Forecast for {city}</Typography>
-      <Grid container >
+      <Grid container spacing={4}>
         {forecast.map(day => {
           return (
             <Grid item xs={12} sm={6} md={3} key={uuid()}>

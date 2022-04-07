@@ -16,7 +16,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [userToken, setUserToken] = useState("");
   const [userData, setUserData] = useState({});
-  const [searchResults, setSearchResults] = useState({});
+  const [searchResults, setSearchResults] = useState([]);
   const [signupError, setSignupError] = useState("");
 
   useEffect(() => {
@@ -43,10 +43,11 @@ function App() {
 
   }, [userToken]);
 
+
   /** Search OMDB for movies */
   async function getMovies(title) {
     const res = await WeatherlyApi.searchMovies(title);
-    setSearchResults(res);
+    setSearchResults(res.Search);
   }
 
 
