@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import SearchCard from "./SearchCard";
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
-import SearchPaper from "./SearchPaper";
 
 import { makeStyles } from "@mui/styles";
 

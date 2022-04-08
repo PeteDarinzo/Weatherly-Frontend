@@ -3,11 +3,26 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import FormControl from '@mui/material/FormControl';
+import { makeStyles } from "@mui/styles";
 
+const useStyles = makeStyles({
+  form: {
+    margin: 20,
+    padding: 20
+  },
+  field: {
+    marginTop: 20,
+    marginBottom: 20,
+    display: "block"
+  }
+});
 
 
 const LoginForm = ({ login }) => {
 
+  const classes = useStyles();
 
   const initialState = {
     username: "",
@@ -32,21 +47,16 @@ const LoginForm = ({ login }) => {
 
 
   return (
-    <div>
+    <Container>
       <Typography variant="h3">Log In</Typography>
-      <Box
-        component="form"
-        onSubmit={handleSubmit}
-        sx={{
-          '& > :not(style)': { m: 1, width: '25ch' },
-        }}
-        noValidate
-        autoComplete="off">
-        <TextField name="username" id="username" label="Username" variant="standard" value={formData.username} onChange={handleChange} />
-        <TextField name="password" id="password" label="Password" variant="standard" value={formData.password} onChange={handleChange} />
-        <Button type="submit" onClick={handleSubmit} variant="outlined">Submit</Button>
-      </Box>
-    </div>
+      <form className={classes.form} onSubmit={handleSubmit}>
+        <FormControl>
+          <TextField className={classes.field} name="username" id="username" label="Username" variant="outlined" value={formData.username} onChange={handleChange} />
+          <TextField className={classes.field} name="password" id="password" label="Password" variant="outlined" value={formData.password} onChange={handleChange} />
+          <Button type="submit" variant="outlined">Submit</Button>
+        </FormControl>
+      </form>
+    </Container>
   );
 }
 

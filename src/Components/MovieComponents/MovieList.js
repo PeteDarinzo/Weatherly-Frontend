@@ -4,9 +4,9 @@ import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import { useSelector, useDispatch } from "react-redux";
 import { fetchTitlesFromAPI } from "../../Actions/actions";
-import MoviePaper from "./MoviePaper";
 import Grid from '@mui/material/Grid';
 import { makeStyles } from "@mui/styles";
+import { Typography } from "@mui/material";
 
 const useStyles = makeStyles({
   container: {
@@ -39,6 +39,7 @@ const MovieList = ({ username }) => {
 
   return (
     <Container className={classes.container}>
+      <Typography my={5} variant="h2">Your Movies:</Typography>
       <Grid container spacing={4} >
           {titles.map(m => {
             return (
