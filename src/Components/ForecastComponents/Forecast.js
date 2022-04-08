@@ -33,11 +33,6 @@ const Forecast = () => {
     dispatch(fetchForecastFromAPI(lat, lon, units));
   }
 
-  /** determine a given days compatibility with the user's preferences
-   *  return 2 for an optimal day
-   *  return 1 for a good day
-   *  return 0 for a neutral day
-   */
   function getCompatibility(day) {
     let conditionsMet;
     let tempMet;

@@ -13,8 +13,13 @@ import FormLabel from '@mui/material/FormLabel';
 import FormGroup from '@mui/material/FormGroup';
 import Switch from '@mui/material/Switch';
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 
 const useStyles = makeStyles({
+  box: {
+    padding: 40,
+    margin: 20
+  },
   field: {
     marginTop: 20,
     marginBottom: 20,
@@ -67,60 +72,63 @@ const UserPreferencesForm = ({ minTemp, maxTemp, units, thunderstorm, drizzle, r
   }
 
   return (
-    <FormControl>
-      <FormLabel id="units">Units</FormLabel>
-      <RadioGroup
-        aria-labelledby="units"
-        defaultValue={formData.units}
-        name="units"
-        onChange={handleChange}
-      >
-        <FormControlLabel value="imperial" control={<Radio />} label="Imperial" />
-        <FormControlLabel value="metric" control={<Radio />} label="Metric" />
-      </RadioGroup>
-      <RangeSlider
-        handleTempChange={handleTempChange}
-        units={formData.units}
-        vals={[minTemp, maxTemp]}
-      />
-      <FormControl component="fieldset" variant="standard">
-        <FormLabel component="legend">Toggle Watch Preferences</FormLabel>
-        <FormGroup>
-          <FormControlLabel
-            control={
-              <Switch checked={formData.thunderstorm} onChange={handleToggle} name="thunderstorm" />
-            }
-            label="Thunderstorm"
-          />
-          <FormControlLabel
-            control={
-              <Switch checked={formData.drizzle} onChange={handleToggle} name="drizzle" />
-            }
-            label="Drizzle"
-          />
-          <FormControlLabel
-            control={
-              <Switch checked={formData.rain} onChange={handleToggle} name="rain" />
-            }
-            label="Rain"
-          />
-          <FormControlLabel
-            control={
-              <Switch checked={formData.snow} onChange={handleToggle} name="snow" />
-            }
-            label="Snow"
-          />
-          <FormControlLabel
-            control={
-              <Switch checked={formData.overcast} onChange={handleToggle} name="overcast" />
-            }
-            label="overcast"
-          />
-        </FormGroup>
-      </FormControl>
-      <Button onClick={handleSubmit} variant="contained" color="secondary">Save Preferences</Button>
-    </FormControl >
-  )
+    <Box sx={{ boxShadow: 3 }} className={classes.box}>
+      <Typography variant="h4">Change Watch Preferences</Typography>
+      <FormControl>
+        <FormLabel id="units">Units</FormLabel>
+        <RadioGroup
+          aria-labelledby="units"
+          defaultValue={formData.units}
+          name="units"
+          onChange={handleChange}
+        >
+          <FormControlLabel value="imperial" control={<Radio />} label="Imperial" />
+          <FormControlLabel value="metric" control={<Radio />} label="Metric" />
+        </RadioGroup>
+        <RangeSlider
+          handleTempChange={handleTempChange}
+          units={formData.units}
+          vals={[minTemp, maxTemp]}
+        />
+        <FormControl component="fieldset" variant="standard">
+          <FormLabel component="legend">Toggle Watch Preferences</FormLabel>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Switch checked={formData.thunderstorm} onChange={handleToggle} name="thunderstorm" />
+              }
+              label="Thunderstorm"
+            />
+            <FormControlLabel
+              control={
+                <Switch checked={formData.drizzle} onChange={handleToggle} name="drizzle" />
+              }
+              label="Drizzle"
+            />
+            <FormControlLabel
+              control={
+                <Switch checked={formData.rain} onChange={handleToggle} name="rain" />
+              }
+              label="Rain"
+            />
+            <FormControlLabel
+              control={
+                <Switch checked={formData.snow} onChange={handleToggle} name="snow" />
+              }
+              label="Snow"
+            />
+            <FormControlLabel
+              control={
+                <Switch checked={formData.overcast} onChange={handleToggle} name="overcast" />
+              }
+              label="overcast"
+            />
+          </FormGroup>
+        </FormControl>
+        <Button onClick={handleSubmit} variant="contained" color="secondary">Save Preferences</Button>
+      </FormControl >
+    </Box>
+  );
 }
 
 export default UserPreferencesForm;

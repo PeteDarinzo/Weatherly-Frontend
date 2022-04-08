@@ -14,6 +14,7 @@ import FormGroup from '@mui/material/FormGroup';
 import Switch from '@mui/material/Switch';
 import UserLocationForm from "./UserLocationForm";
 import UserPreferencesForm from "./UserPreferencesForm";
+import Grid from '@mui/material/Grid';
 
 
 const useStyles = makeStyles({
@@ -32,73 +33,41 @@ const UserDashboard = ({ updateUser }) => {
   const userData = useSelector(store => store.user);
   const { postalCode, countryCode, minTemp, maxTemp, units, thunderstorm, drizzle, rain, snow, overcast } = userData;
 
-  // const initialState = {
-  //   postalCode,
-  //   countryCode,
-  //   minTemp,
-  //   maxTemp,
-  //   units,
-  //   thunderstorm,
-  //   drizzle,
-  //   rain,
-  //   snow,
-  //   overcast
-  // }
-
   useEffect(() => {
 
     if (userData) {
-      //   setFormData({
-      //     postalCode,
-      //     countryCode,
-      //     minTemp,
-      //     maxTemp,
-      //     units,
-      //     thunderstorm,
-      //     drizzle,
-      //     rain,
-      //     snow,
-      //     overcast
-      //   });
       setIsLoading(false);
     }
 
   }, [userData])
 
-  // const [formData, setFormData] = useState(initialState);
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData(formData => ({
-  //     ...formData,
-  //     [name]: value
-  //   }));
-  //   console.log(formData);
-  // }
-
-  // function handleTempChange(tempArray) {
-  //   setFormData(formData => ({
-  //     ...formData,
-  //     minTemp: tempArray[0],
-  //     maxTemp: tempArray[1]
-  //   }));
-  // }
-
-  // function handleToggle(e) {
-  //   setFormData({
-  //     ...formData,
-  //     [e.target.name]: e.target.checked
-  //   });
-  //   console.log(formData);
-  // }
-
-
   if (isLoading) return (<b>Loading...</b>)
 
   return (
     <Container>
-      <UserLocationForm postalCode={postalCode} countryCode={countryCode} updateUserLocation={updateUser} />
-      <UserPreferencesForm units={units} minTemp={minTemp} maxTemp={maxTemp} thunderstorm={thunderstorm} drizzle={drizzle} rain={rain} snow={snow} overcast={overcast} updateUserPreferences={updateUser} />
+      <Grid container
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Grid item md={6}>
+          <UserLocationForm
+            postalCode={postalCode}
+            countryCode={countryCode}
+            updateUserLocation={updateUser} />
+        </Grid>
+        <Grid item md={6}>
+          <UserPreferencesForm
+            units={units}
+            minTemp={minTemp}
+            maxTemp={maxTemp}
+            thunderstorm={thunderstorm}
+            drizzle={drizzle}
+            rain={rain}
+            snow={snow}
+            overcast={overcast}
+            updateUserPreferences={updateUser} />
+        </Grid>
+      </Grid>
     </Container>
   );
 }

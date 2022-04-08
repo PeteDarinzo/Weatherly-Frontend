@@ -12,9 +12,18 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import FormGroup from '@mui/material/FormGroup';
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import { shadows } from '@mui/system';
 
 
 const useStyles = makeStyles({
+  box: {
+    padding: 40,
+    margin: 20
+  },
+  form: {
+    // margin: 40
+  },
   field: {
     marginTop: 20,
     marginBottom: 20,
@@ -46,29 +55,34 @@ const UserLocationForm = ({ postalCode, countryCode, updateUserLocation }) => {
   }
 
   return (
-    <FormControl>
-      <TextField
-        className={classes.field}
-        name="postalCode"
-        id="postalCode"
-        label="Postal Code"
-        variant="outlined"
-        value={formData.postalCode}
-        onChange={handleChange}
-      />
-      <TextField
-        className={classes.field}
-        name="countryCode"
-        id="country-code"
-        value={formData.countryCode}
-        label="Country"
-        onChange={handleChange}
-        select
-        fullWidth>
-        {countryList.map(country => <MenuItem key={countryListAlpha2[country]} value={countryListAlpha2[country]}>{country}</MenuItem>)}
-      </TextField>
-      <Button variant="contained" color="secondary" onClick={handleSubmit}>Save Location</Button>
-    </FormControl>
+    <Container>
+      <Box sx={{ boxShadow: 3 }} className={classes.box}>
+        <Typography variant="h4">Change Location</Typography>
+        <FormControl>
+          <TextField
+            className={classes.field}
+            name="postalCode"
+            id="postalCode"
+            label="Postal Code"
+            variant="outlined"
+            value={formData.postalCode}
+            onChange={handleChange}
+          />
+          <TextField
+            className={classes.field}
+            name="countryCode"
+            id="country-code"
+            value={formData.countryCode}
+            label="Country"
+            onChange={handleChange}
+            select
+            fullWidth>
+            {countryList.map(country => <MenuItem key={countryListAlpha2[country]} value={countryListAlpha2[country]}>{country}</MenuItem>)}
+          </TextField>
+          <Button variant="contained" color="secondary" onClick={handleSubmit}>Save Location</Button>
+        </FormControl>
+      </Box>
+    </Container>
   );
 }
 

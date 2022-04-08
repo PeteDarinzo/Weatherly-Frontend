@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     marginBottom: 20,
     display: "block"
   }
-})
+});
 
 const SignupForm = ({ register }) => {
 

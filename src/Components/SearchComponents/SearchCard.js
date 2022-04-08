@@ -10,33 +10,28 @@ import Typography from '@mui/material/Typography';
 // const SearchCard = ({ id, title, posterUrl }) => {
 const SearchCard = ({ movie, saveMovie }) => {
 
-  const dispatch = useDispatch();
-
   function handleClick() {
     saveMovie(movie);
-    // dispatch(sendMovieToAPI(movie));
   }
 
-  // function handleClick() {
-  //   dispatch(sendMovieToAPI(1, id, title, posterUrl));
-  // }
-
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: '275px' }}>
       <CardMedia
         component="img"
-        height="140"
         image={movie.Poster}
         alt={movie.Title}
-        sx={{ maxWidth: "50%" }}
+        sx={{ width: '100%', height: '100%' }}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography variant="h6">
           {movie.Title}
+        </Typography>
+        <Typography>
+          {movie.Year}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button onClick={handleClick} size="small" variant="contained">Save</Button>
+        <Button onClick={handleClick} variant="contained">Save</Button>
       </CardActions>
     </Card>
   );

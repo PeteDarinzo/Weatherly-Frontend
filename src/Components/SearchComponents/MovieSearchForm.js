@@ -6,8 +6,24 @@ import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import Box from '@mui/material/Box';
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  form: {
+    margin: 20,
+    padding: 20
+  },
+  field: {
+    marginTop: 20,
+    marginBottom: 20,
+    display: "block"
+  }
+});
 
 const MovieSearchForm = ({ getMovies }) => {
+
+  const classes = useStyles();
 
   const intialState = {
     title: ""
@@ -31,18 +47,24 @@ const MovieSearchForm = ({ getMovies }) => {
 
   return (
     <Container>
-      <form onSubmit={handleSubmit}>
-        <FormControl onSubmit={handleSubmit}>
-          <TextField
-            name="title"
-            id="title"
-            label="Title"
-            variant="standard"
-            value={formData.title}
-            onChange={handleChange} />
-          <Button variant="contained" color="secondary" onClick={handleSubmit}>Search</Button>
-        </FormControl>
-      </form>
+      <Box className={classes.form} sx={{ border: '3px solid black' }}>
+        <Typography variant="h4">Search Titles</Typography>
+        <form onSubmit={handleSubmit}>
+          <FormControl fullWidth>
+            <TextField
+              className={classes.field}
+              name="title"
+              id="title"
+              label="Title"
+              variant="outlined"
+              value={formData.title}
+              fullWidth
+              onChange={handleChange}
+              required />
+            <Button type="submit" variant="contained" color="secondary">Search</Button>
+          </FormControl>
+        </form>
+      </Box>
     </Container>
   );
 }

@@ -2,12 +2,25 @@ import React, { useEffect, useState } from "react";
 import SearchCard from "./SearchCard";
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
+import SearchPaper from "./SearchPaper";
+
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  container: {
+    padding: 20
+  }
+});
+
 
 const SearchList = ({ movies, saveMovie }) => {
 
+  const classes = useStyles();
+
+
   return (
-    <Container maxWidth="sm">
-      <Stack spacing={2}>
+    <Container className={classes.container} maxWidth="sm">
+      <Stack spacing={4}>
         {movies.map(movie => (<SearchCard movie={movie} saveMovie={saveMovie} key={movie.imdbID} />))}
       </Stack>
     </Container>

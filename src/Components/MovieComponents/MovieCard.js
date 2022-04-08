@@ -6,21 +6,25 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-const MovieCard = ({id, title, img, plot }) => {
+const MovieCard = ({ id, title, img, plot }) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea component={Link} to={`/movies/${id}`}>
+    <Card sx={{height: '100%'}}>
+      <CardActionArea
+        component={Link}
+        to={`/movies/${id}`}>
         <CardMedia
           component="img"
-          height="140"
           image={img}
           alt={title}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography
+            variant="subtitle1" >
             {title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography
+            variant="body2"
+            color="text.secondary">
             {plot}
           </Typography>
         </CardContent>

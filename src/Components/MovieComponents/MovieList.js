@@ -4,8 +4,19 @@ import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import { useSelector, useDispatch } from "react-redux";
 import { fetchTitlesFromAPI } from "../../Actions/actions";
+import MoviePaper from "./MoviePaper";
+import Grid from '@mui/material/Grid';
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  container: {
+    padding: 40
+  }
+});
 
 const MovieList = ({ username }) => {
+  
+  const classes = useStyles();
 
   const titles = useSelector(store => store.titles);
   const dispatch = useDispatch();
@@ -27,10 +38,15 @@ const MovieList = ({ username }) => {
   if (!titles.length) return (<b>No movies to show!</b>);
 
   return (
-    <Container maxWidth="sm">
-      <Stack spacing={2}>
-        {titles.map(m => <MovieCard id={m.id} title={m.title} img={m.posterUrl} plot={m.plot} key={m.id} />)}
-      </Stack>
+    <Container className={classes.container}>
+      <Grid container spacing={4} >
+          {titles.map(m => {
+            return (
+              <Grid item xs={12} sm={4} md={3} lg={2}>
+                <MovieCard id={m.id} title={m.title} img={m.posterUrl} plot={m.plot} key={m.id} />
+              </Grid>);
+          })}
+      </Grid>
     </Container>
   );
 }
