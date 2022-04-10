@@ -27,6 +27,7 @@ const MovieDetail = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  /** the movie may already be present in the store, if not, it is fetched from the API */
   useEffect(() => {
 
     async function getMovie() {

@@ -46,7 +46,7 @@ function App() {
 
   /** Search OMDB for movies */
   async function getMovies(title) {
-    const res = await WeatherlyApi.searchMovies(title);
+    const res = await WeatherlyApi.searchMoviesByTitle(title);
     setSearchResults(res.Search);
   }
 

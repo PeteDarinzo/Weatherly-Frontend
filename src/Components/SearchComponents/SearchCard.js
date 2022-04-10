@@ -7,7 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-// const SearchCard = ({ id, title, posterUrl }) => {
+
 const SearchCard = ({ movie, saveMovie }) => {
 
   function handleClick() {

@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 });
 
 const MovieList = ({ username }) => {
-  
+
   const classes = useStyles();
 
   const titles = useSelector(store => store.titles);
@@ -41,12 +41,12 @@ const MovieList = ({ username }) => {
     <Container className={classes.container}>
       <Typography my={5} variant="h2">Your Movies:</Typography>
       <Grid container spacing={4} >
-          {titles.map(m => {
-            return (
-              <Grid item xs={12} sm={4} md={3} lg={2}>
-                <MovieCard id={m.id} title={m.title} img={m.posterUrl} plot={m.plot} key={m.id} />
-              </Grid>);
-          })}
+        {titles.map(m => {
+          return (
+            <Grid item xs={12} sm={4} md={3} lg={2} key={m.id}>
+              <MovieCard id={m.id} title={m.title} img={m.posterUrl} plot={m.plot} />
+            </Grid>);
+        })}
       </Grid>
     </Container>
   );

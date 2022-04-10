@@ -20,11 +20,6 @@ const API_URL = "http://localhost:3001";
 const OPEN_WEATHER_URL = "https://api.openweathermap.org/data/2.5/onecall?"
 
 
-/*** SEARCH MOVIES ***/
-
-
-
-
 /*** SAVE MOVIE ***/
 
 export function sendMovieToAPI(movie, username) {
@@ -39,21 +34,6 @@ export function sendMovieToAPI(movie, username) {
     dispatch(saveMovie(movie));
   }
 }
-
-// export function sendMovieToAPI(userId, movieId, title, posterUrl) {
-//   const movieObj = {
-//     id: movieId,
-//     title,
-//     posterUrl
-//   }
-//   return async function (dispatch) {
-//     await Promise.all([
-//       axios.post(`${API_URL}/movies/save`, movieObj),
-//       axios.post(`${API_URL}/users/${userId}/movies`, { movieId }),
-//     ]);
-//     dispatch(saveMovie(movieObj));
-//   }
-// }
 
 function saveMovie(movie) {
   return {
@@ -78,13 +58,13 @@ function getTitles(titles) {
   }
 }
 
-
 /*** FETCH MOVIE ***/
 
 export function fetchMovieFromAPI(movieId) {
   return async function (dispatch) {
-    const res = await axios.get(`${API_URL}/movies/${movieId}`);
-    const movie = res.data;
+    // const reis = await axios.get(`${API_URL}/movies/${movieId}`);
+    const movie = await WeatherlyApi.searchMoviesById(movieId);
+    // const movie = res.data;
     dispatch(getMovie(movie));
   }
 }
