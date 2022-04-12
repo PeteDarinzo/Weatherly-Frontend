@@ -9,6 +9,7 @@ import {
   UPDATE_USER
 } from "./actionTypes";
 import CircularlyLinkedList from "../Components/DataStructures/CircularLinkedList";
+import { DateTime } from "luxon";
 
 const OPEN_WEATHER_API_KEY = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
 
@@ -111,10 +112,13 @@ export function fetchForecastFromAPI(lat, lon, units) {
       }
     });
     const d = (new Date()).toString();
+    let dt = DateTime.now();
     const today = d.slice(0, 3);
     let days = DAYS_OF_WEEK.traverse(today, 8);
     const forecast = res.data.daily.map(day => {
       day.name = days.shift();
+      day.date = dt.toLocaleString();
+      dt = dt.plus({ days: 1 });
       return day;
     });
     dispatch(getForecast(forecast));

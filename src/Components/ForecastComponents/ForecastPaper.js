@@ -14,7 +14,7 @@ const styles = {
   }
 }
 
-const ForecastPaper = ({ day, description, min, max, feelsLike, icon, units, compatibility}) => {
+const ForecastPaper = ({ day, date, description, min, max, feelsLike, icon, units, compatibility }) => {
   return (
     <Paper
       elevation={12}
@@ -27,6 +27,7 @@ const ForecastPaper = ({ day, description, min, max, feelsLike, icon, units, com
       }}
     >
       <Typography>{day}</Typography>
+      <Typography>{date}</Typography>
       <Typography>
         {description}
       </Typography>

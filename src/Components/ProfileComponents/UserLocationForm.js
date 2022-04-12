@@ -19,7 +19,7 @@ import { shadows } from '@mui/system';
 const useStyles = makeStyles({
   box: {
     padding: 40,
-    margin: 20
+    // margin: 20
   },
   form: {
     // margin: 40
@@ -56,7 +56,7 @@ const UserLocationForm = ({ postalCode, countryCode, updateUserLocation }) => {
 
   return (
     <Container>
-      <Box sx={{ boxShadow: 3 }} className={classes.box}>
+      <Box className={classes.box}>
         <Typography variant="h4">Change Location</Typography>
         <FormControl>
           <TextField

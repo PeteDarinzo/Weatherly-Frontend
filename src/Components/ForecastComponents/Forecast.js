@@ -84,7 +84,16 @@ const Forecast = () => {
           return (
             <Grid item xs={12} sm={6} md={3} key={uuid()}>
 
-              <ForecastPaper day={day.name} min={day.temp.min} max={day.temp.max} feelsLike={day.feels_like.day} description={(day.weather[0]).description} icon={(day.weather[0]).icon} units={units === "imperial" ? "F" : "C"} compatibility={compatibility} />
+              <ForecastPaper
+                day={day.name}
+                date={day.date}
+                min={day.temp.min}
+                max={day.temp.max}
+                feelsLike={day.feels_like.day}
+                description={(day.weather[0]).description}
+                icon={(day.weather[0]).icon}
+                units={units === "imperial" ? "F" : "C"}
+                compatibility={compatibility} />
 
               {/* <ForecastCard min={day.temp.min} max={day.temp.max} feelsLike={day.feels_like.day} description={(day.weather[0]).description} icon={(day.weather[0]).icon} /> */}
             </Grid>

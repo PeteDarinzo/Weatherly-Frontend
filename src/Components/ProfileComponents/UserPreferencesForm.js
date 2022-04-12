@@ -18,7 +18,7 @@ import Box from '@mui/material/Box';
 const useStyles = makeStyles({
   box: {
     padding: 40,
-    margin: 20
+    // margin: 20
   },
   field: {
     marginTop: 20,
@@ -72,7 +72,7 @@ const UserPreferencesForm = ({ minTemp, maxTemp, units, thunderstorm, drizzle, r
   }
 
   return (
-    <Box sx={{ boxShadow: 3 }} className={classes.box}>
+    <Box className={classes.box}>
       <Typography variant="h4">Change Watch Preferences</Typography>
       <FormControl>
         <FormLabel id="units">Units</FormLabel>
