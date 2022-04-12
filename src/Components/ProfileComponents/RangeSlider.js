@@ -59,7 +59,6 @@ export default function RangeSlider({ handleTempChange, units, vals }) {
   const [values, setValues] = useState([20, 40]);
 
   useEffect(() => {
-    console.log(vals[0]);
     if (!vals[0]) {
       if (units === "imperial") {
         setValues([50, 80]);
