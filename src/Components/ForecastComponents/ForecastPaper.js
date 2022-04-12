@@ -6,6 +6,9 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Scale from "./Scale";
 
 const styles = {
   media: {
@@ -26,37 +29,50 @@ const ForecastPaper = ({ day, date, description, min, max, feelsLike, icon, unit
         textAlign: "center",
       }}
     >
-      <Typography>{day}</Typography>
-      <Typography>{date}</Typography>
-      <Typography>
-        {description}
-      </Typography>
-      <Box
-        component="img"
-        sx={{
-          height: 75,
-          width: 75,
-          maxHeight: { xs: 233, md: 167 },
-          maxWidth: { xs: 350, md: 250 },
-        }}
-        alt={description}
-        src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
-        style={{
-          backgroundColor: "lightskyblue"
-        }}
-      />
-      <Typography>
+      {/* <Typography>{day}</Typography>
+      <Typography>{date}</Typography> */}
+
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <Typography sx={{ fontSize: "1.7rem" }}>{day}</Typography>
+          <Typography sx={{ fontSize: "1.3rem" }}>{date}</Typography>
+        </Grid>
+        <Grid item xs={2}>
+          <Scale compatibility={compatibility} />
+        </Grid>
+        <Grid item xs={10}>
+          <Box
+            component="img"
+            sx={{
+              height: 75,
+              width: 75,
+              maxHeight: { xs: 233, md: 167 },
+              maxWidth: { xs: 350, md: 250 },
+            }}
+            alt={description}
+            src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
+            style={{
+              backgroundColor: "lightskyblue"
+            }}
+          />
+          <Typography
+            sx={{ fontSize: "1.5rem" }}>
+            {Math.round(feelsLike)} &deg;{units}
+          </Typography>
+          <Typography
+            sx={{ fontsize: "1.3rem" }}
+            variant="body1">
+            {description}
+          </Typography>
+          {/* <Typography>
         Min: {min} {units}
       </Typography>
       <Typography>
         Max: {max} {units}
-      </Typography>
-      <Typography>
-        Feels Like: {feelsLike} {units}
-      </Typography>
-      <Typography>
-        Good day to watch? {compatibility}
-      </Typography>
+      </Typography> */}
+
+        </Grid>
+      </Grid>
     </Paper >
   );
 }

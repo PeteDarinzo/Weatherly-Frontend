@@ -59,11 +59,11 @@ const Forecast = () => {
     }
 
     if (conditionsMet && tempMet) {
-      return "Very Good!";
+      return 3;
     } else if (conditionsMet || tempMet) {
-      return "Good!";
+      return 2;
     } else {
-      return "Neutral!";
+      return 1;
     }
   }
 
@@ -72,10 +72,11 @@ const Forecast = () => {
 
   return (
     <Container>
-      {/* <Box m={4}>
-        <Button onClick={handleClick} variant="contained">Refresh</Button>
-      </Box> */}
-      <Typography variant="h3" sx={{ margin: "20px" }}>Forecast for {city}</Typography>
+      <Typography
+        variant="h3"
+        sx={{ margin: "20px" }}
+        color="common.blue"
+      >Forecast for {city}</Typography>
       <Grid container spacing={3}>
         {forecast.map(day => {
 
@@ -94,8 +95,6 @@ const Forecast = () => {
                 icon={(day.weather[0]).icon}
                 units={units === "imperial" ? "F" : "C"}
                 compatibility={compatibility} />
-
-              {/* <ForecastCard min={day.temp.min} max={day.temp.max} feelsLike={day.feels_like.day} description={(day.weather[0]).description} icon={(day.weather[0]).icon} /> */}
             </Grid>
           )
         })}
