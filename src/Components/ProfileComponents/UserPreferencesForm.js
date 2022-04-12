@@ -14,6 +14,8 @@ import FormGroup from '@mui/material/FormGroup';
 import Switch from '@mui/material/Switch';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import { useDispatch } from "react-redux";
+import { fetchForecastFromAPI } from "../../Actions/actions";
 
 const useStyles = makeStyles({
   box: {
@@ -30,6 +32,10 @@ const useStyles = makeStyles({
 const UserPreferencesForm = ({ minTemp, maxTemp, units, thunderstorm, drizzle, rain, snow, overcast, updateUserPreferences }) => {
 
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const userData = useSelector(store => store.user);
+
+  let { lat, lon } = userData;
 
   const initialState = {
     minTemp,
@@ -48,7 +54,10 @@ const UserPreferencesForm = ({ minTemp, maxTemp, units, thunderstorm, drizzle, r
     const { name, value } = e.target;
     setFormData(formData => ({
       ...formData,
-      [name]: value
+      // [name]: value,
+      minTemp: null,
+      maxTemp: null,
+      units: value
     }));
   }
 
@@ -68,6 +77,8 @@ const UserPreferencesForm = ({ minTemp, maxTemp, units, thunderstorm, drizzle, r
   }
 
   function handleSubmit() {
+    // refetch forecast in case units changed
+    dispatch(fetchForecastFromAPI(lat, lon, formData.units));
     updateUserPreferences(formData);
   }
 
@@ -96,7 +107,7 @@ const UserPreferencesForm = ({ minTemp, maxTemp, units, thunderstorm, drizzle, r
         <RangeSlider
           handleTempChange={handleTempChange}
           units={formData.units}
-          vals={[minTemp, maxTemp]}
+          vals={[formData.minTemp, formData.maxTemp]}
         />
         <FormControl
           component="fieldset"

@@ -35,7 +35,9 @@ const UserDashboard = ({ updateUser }) => {
 
   useEffect(() => {
 
-    if (userData) {
+    const data = Object.keys(userData);
+
+    if (data.length) {
       setIsLoading(false);
     }
 
