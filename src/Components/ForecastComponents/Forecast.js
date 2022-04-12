@@ -22,16 +22,18 @@ const Forecast = () => {
   useEffect(() => {
 
     if (userData) {
-      setUserPrefs({minTemp, maxTemp, thunderstorm, drizzle, rain, snow, overcast });
+      setUserPrefs({ minTemp, maxTemp, thunderstorm, drizzle, rain, snow, overcast });
+      if (!forecast.length) {
+        dispatch(fetchForecastFromAPI(lat, lon, units));
+      }
     }
 
   }, [userData]);
 
 
-  function handleClick() {
-    console.log(userPrefs);
-    dispatch(fetchForecastFromAPI(lat, lon, units));
-  }
+  // function handleClick() {
+  //   dispatch(fetchForecastFromAPI(lat, lon, units));
+  // }
 
   function getCompatibility(day) {
     let conditionsMet;
@@ -52,13 +54,11 @@ const Forecast = () => {
       conditionsMet = false
     }
 
-
-
-    if(temperature <= userPrefs.minTemp || userPrefs.maxTemp <= temperature) {
+    if (temperature <= userPrefs.minTemp || userPrefs.maxTemp <= temperature) {
       tempMet = true;
     }
 
-    if(conditionsMet && tempMet) {
+    if (conditionsMet && tempMet) {
       return "Very Good!";
     } else if (conditionsMet || tempMet) {
       return "Good!";
@@ -67,12 +67,15 @@ const Forecast = () => {
     }
   }
 
+  if (!forecast.length) return (<b>Loading forecast</b>)
+
+
   return (
     <Container>
-      <Box m={4}>
+      {/* <Box m={4}>
         <Button onClick={handleClick} variant="contained">Refresh</Button>
-      </Box>
-      <Typography variant="h3">Forecast for {city}</Typography>
+      </Box> */}
+      <Typography variant="h3" sx={{ margin: "20px" }}>Forecast for {city}</Typography>
       <Grid container spacing={3}>
         {forecast.map(day => {
 

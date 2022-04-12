@@ -47,7 +47,7 @@ const MovieSearchForm = ({ getMovies }) => {
 
   return (
     <Container>
-      <Box className={classes.form} sx={{ border: '3px solid black' }}>
+      <Box className={classes.form}>
         <Typography variant="h4">Search Titles</Typography>
         <form onSubmit={handleSubmit}>
           <FormControl fullWidth>
@@ -61,7 +61,11 @@ const MovieSearchForm = ({ getMovies }) => {
               fullWidth
               onChange={handleChange}
               required />
-            <Button type="submit" variant="contained" color="secondary">Search</Button>
+            <Button
+              type="submit"
+              variant="contained"
+              color="info"
+              size="large">Search</Button>
           </FormControl>
         </form>
       </Box>

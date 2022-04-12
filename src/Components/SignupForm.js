@@ -48,7 +48,7 @@ const SignupForm = ({ register }) => {
 
 
   return (
-    <Container>
+    <Container sx={{ width: "500px", marginTop: "20px" }}>
       <Typography variant="h3">Sign Up</Typography>
       <form onSubmit={handleSubmit}>
         <FormControl fullWidth onSubmit={handleSubmit}>
@@ -70,6 +70,7 @@ const SignupForm = ({ register }) => {
             variant="outlined"
             value={formData.password}
             onChange={handleChange}
+            fullWidth
             required />
           <TextField
             className={classes.field}
@@ -79,6 +80,7 @@ const SignupForm = ({ register }) => {
             variant="outlined"
             value={formData.zipCode}
             onChange={handleChange}
+            fullWidth
             required />
           <TextField
             className={classes.field}
@@ -91,7 +93,11 @@ const SignupForm = ({ register }) => {
             fullWidth>
             {countryList.map(country => <MenuItem key={countryListAlpha2[country]} value={countryListAlpha2[country]}>{country}</MenuItem>)}
           </TextField>
-          <Button type="submit" onClick={handleSubmit} variant="contained">Submit</Button>
+          <Button
+            size="large"
+            type="submit"
+            variant="contained"
+            color="info">Submit</Button>
         </FormControl>
       </form>
     </Container >

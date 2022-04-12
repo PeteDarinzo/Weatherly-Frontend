@@ -7,8 +7,19 @@ import WeatherlyApi from './Api';
 import jwt_decode from "jwt-decode";
 import { saveUserData, sendMovieToAPI } from '../Actions/actions';
 import { useDispatch } from "react-redux";
+import Paper from '@mui/material/Paper';
+import Container from '@mui/material/Container';
+
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+
 
 function App() {
+
+  const theme = createTheme({
+    palette: {
+      mode: "dark",
+    },
+  });
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -22,7 +33,7 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem("weatherlyToken")) {
       const token = JSON.parse(localStorage.getItem("weatherlyToken"));
-      WeatherlyApi.token = token; // set token for future reqeusts
+      WeatherlyApi.token = token; // set token for future requests
       setUserToken(token);
     }
   }, []);
@@ -93,19 +104,21 @@ function App() {
   }
 
   return (
-    <div>
-      <NavBar loggedIn={userToken} logout={logout} />
-      <Routes
-        getMovies={getMovies}
-        searchResults={searchResults}
-        register={register}
-        login={login}
-        loggedIn={userToken}
-        saveMovie={saveMovie}
-        username={userData.username}
-        updateUser={updateUser}
-      />
-    </div>
+    <ThemeProvider theme={theme}>
+      <Paper sx={{ minHeight: "100vh" }}>
+        <NavBar loggedIn={userToken} logout={logout} />
+        <Routes
+          getMovies={getMovies}
+          searchResults={searchResults}
+          register={register}
+          login={login}
+          loggedIn={userToken}
+          saveMovie={saveMovie}
+          username={userData.username}
+          updateUser={updateUser}
+        />
+      </Paper>
+    </ThemeProvider>
   );
 }
 

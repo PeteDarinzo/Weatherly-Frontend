@@ -62,9 +62,7 @@ function getTitles(titles) {
 
 export function fetchMovieFromAPI(movieId) {
   return async function (dispatch) {
-    // const reis = await axios.get(`${API_URL}/movies/${movieId}`);
     const movie = await WeatherlyApi.searchMoviesById(movieId);
-    // const movie = res.data;
     dispatch(getMovie(movie));
   }
 }
@@ -101,6 +99,7 @@ export function deleteFromWatchList(userId, movieId) {
 /** FETCH FORECAST */
 
 export function fetchForecastFromAPI(lat, lon, units) {
+  console.log("requesting forecast");
   return async function (dispatch) {
     const res = await axios.get(OPEN_WEATHER_URL, {
       params: {
@@ -130,12 +129,6 @@ function getForecast(forecast) {
 }
 
 /** UPDATE USER */
-
-// export function sendUserDataToApi(userData) {
-//   // return async function(dispatch) {
-
-//   // }
-// }
 
 export function saveUserData(userData) {
   return {

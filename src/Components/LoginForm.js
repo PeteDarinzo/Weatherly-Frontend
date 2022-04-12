@@ -8,10 +8,6 @@ import FormControl from '@mui/material/FormControl';
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
-  form: {
-    margin: 20,
-    padding: 20
-  },
   field: {
     marginTop: 20,
     marginBottom: 20,
@@ -47,13 +43,35 @@ const LoginForm = ({ login }) => {
 
 
   return (
-    <Container>
+    <Container sx={{ width: "500px", marginTop: "20px" }}>
       <Typography variant="h3">Log In</Typography>
-      <form className={classes.form} onSubmit={handleSubmit}>
-        <FormControl>
-          <TextField className={classes.field} name="username" id="username" label="Username" variant="outlined" value={formData.username} onChange={handleChange} />
-          <TextField className={classes.field} name="password" id="password" label="Password" variant="outlined" value={formData.password} onChange={handleChange} />
-          <Button type="submit" variant="outlined">Submit</Button>
+      <form onSubmit={handleSubmit}>
+        <FormControl fullWidth>
+          <TextField
+            className={classes.field}
+            name="username"
+            id="username"
+            label="Username"
+            variant="outlined"
+            value={formData.username}
+            onChange={handleChange}
+            fullWidth
+            required />
+          <TextField
+            className={classes.field}
+            name="password"
+            id="password"
+            label="Password"
+            variant="outlined"
+            value={formData.password}
+            onChange={handleChange}
+            fullWidth
+            required />
+          <Button
+            type="submit"
+            size="large"
+            variant="contained"
+            color="info">Submit</Button>
         </FormControl>
       </form>
     </Container>
