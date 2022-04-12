@@ -9,9 +9,28 @@ import ForecastPaper from "./ForecastPaper";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchForecastFromAPI } from "../../Actions/actions";
 import { Typography } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import { blue } from "@mui/material/colors";
+
+const useStyles = makeStyles({
+  box: {
+    padding: 40,
+    // margin: 20
+  },
+  field: {
+    marginTop: 20,
+    marginBottom: 20,
+    display: "block"
+  },
+  root: {
+    color: "blue"
+  }
+});
 
 
 const Forecast = () => {
+
+  const classes = useStyles();
 
   const userData = useSelector(store => store.user);
   const { lat, lon, city, minTemp, maxTemp, units, thunderstorm, drizzle, rain, snow, overcast } = userData;
@@ -73,9 +92,9 @@ const Forecast = () => {
   return (
     <Container>
       <Typography
-        variant="h3"
+        variant="h2"
         sx={{ margin: "20px" }}
-        color="common.blue"
+        color="textPrimary"
       >Forecast for {city}</Typography>
       <Grid container spacing={3}>
         {forecast.map(day => {

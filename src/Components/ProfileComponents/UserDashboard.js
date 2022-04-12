@@ -50,12 +50,6 @@ const UserDashboard = ({ updateUser }) => {
         justifyContent="center"
       >
         <Grid item md={6}>
-          <UserLocationForm
-            postalCode={postalCode}
-            countryCode={countryCode}
-            updateUserLocation={updateUser} />
-        </Grid>
-        <Grid item md={6}>
           <UserPreferencesForm
             units={units}
             minTemp={minTemp}
@@ -66,6 +60,12 @@ const UserDashboard = ({ updateUser }) => {
             snow={snow}
             overcast={overcast}
             updateUserPreferences={updateUser} />
+        </Grid>
+        <Grid item md={6}>
+          <UserLocationForm
+            postalCode={postalCode}
+            countryCode={countryCode}
+            updateUserLocation={updateUser} />
         </Grid>
       </Grid>
     </Container>
