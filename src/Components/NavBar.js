@@ -68,16 +68,27 @@ const NavBar = ({ loggedIn, logout }) => {
                   open={Boolean(anchorEl)}
                   onClose={() => setAnchorEl(null)}
                 >
-                  <MenuItem onClick={() => handleMenuClick('/home')}>Home</MenuItem>
-                  <MenuItem onClick={() => handleMenuClick('/search')}>Search</MenuItem>
-                  <MenuItem onClick={() => handleMenuClick('/forecast')}>Forecast</MenuItem>
-                  <MenuItem onClick={() => handleMenuClick('/movies')}>Movies</MenuItem>
-                  <MenuItem onClick={() => handleMenuClick('/profile')}>Profile</MenuItem>
+                  {loggedIn
+                    ? (<>
+                      <MenuItem onClick={() => handleMenuClick('/home')}>Home</MenuItem>
+                      <MenuItem onClick={() => handleMenuClick('/search')}>Search</MenuItem>
+                      <MenuItem onClick={() => handleMenuClick('/forecast')}>Forecast</MenuItem>
+                      <MenuItem onClick={() => handleMenuClick('/movies')}>Movies</MenuItem>
+                      <MenuItem onClick={() => handleMenuClick('/profile')}>Profile</MenuItem>
+                      <MenuItem onClick={() => {
+                        logout();
+                        handleMenuClick('/profile');
+                      }}>Logout</MenuItem>
+                    </>)
+                    : (<>
+                      <MenuItem onClick={() => handleMenuClick('/signup')}>Signup</MenuItem>
+                      <MenuItem onClick={() => handleMenuClick('/login')}>Login</MenuItem>
+                    </>)}
                 </Menu>
               </>)
               : (<>
-                {loggedIn ? (
-                  <>
+                {loggedIn
+                  ? (<>
                     <Button component={NavLink} to="/home" color="inherit">Home</Button>
                     <Button component={NavLink} to="/search" color="inherit">Search</Button>
                     <Button component={NavLink} to="/forecast" color="inherit">Forecast</Button>
@@ -85,12 +96,11 @@ const NavBar = ({ loggedIn, logout }) => {
                     <Button component={NavLink} to="/profile" color="inherit">Profile</Button>
                     <Button component={NavLink} to="/home" onClick={logout} color="inherit">Logout</Button>
                   </>
-                )
-                  : (
-                    <>
-                      <Button component={NavLink} to="/signup" color="inherit">Signup</Button>
-                      <Button component={NavLink} to="/login" color="inherit">Login</Button>
-                    </>
+                  )
+                  : (<>
+                    <Button component={NavLink} to="/signup" color="inherit">Signup</Button>
+                    <Button component={NavLink} to="/login" color="inherit">Login</Button>
+                  </>
                   )}
               </>)
             }
