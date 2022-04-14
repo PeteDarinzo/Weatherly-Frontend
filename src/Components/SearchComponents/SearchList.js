@@ -19,7 +19,7 @@ const SearchList = ({ movies, saveMovie }) => {
 
   return (
     <Container className={classes.container} maxWidth="sm">
-      <Stack spacing={4}>
+      <Stack>
         {movies.map(movie => (<SearchCard movie={movie} saveMovie={saveMovie} key={movie.imdbID} />))}
       </Stack>
     </Container>

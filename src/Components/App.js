@@ -5,12 +5,13 @@ import NavBar from "./NavBar";
 import Routes from "./Routes";
 import WeatherlyApi from './Api';
 import jwt_decode from "jwt-decode";
-import { saveUserData, sendMovieToAPI } from '../Actions/actions';
-import { useDispatch } from "react-redux";
+import { fetchForecastFromAPI, saveUserData, sendMovieToAPI, fetchTitlesFromAPI } from '../Actions/actions';
+import { useDispatch, useSelector } from "react-redux";
 import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
 
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import { TitleSharp } from '@mui/icons-material';
 
 
 function App() {
@@ -23,6 +24,8 @@ function App() {
 
   const history = useHistory();
   const dispatch = useDispatch();
+  const forecast = useSelector(store => store.forecast);
+  const titles = useSelector(store => store.titles);
 
   const [isLoading, setIsLoading] = useState(true);
   const [userToken, setUserToken] = useState("");
@@ -53,6 +56,34 @@ function App() {
     setSignupError("");
 
   }, [userToken]);
+
+  useEffect(() => {
+
+    async function loadTitles(username) {
+      await dispatch(fetchTitlesFromAPI(username));
+      // setIsLoading(false);
+    }
+
+    async function loadForecast(lat, lon, units) {
+      await dispatch(fetchForecastFromAPI(lat, lon, units))
+    }
+
+    const data = Object.keys(userData);
+
+    if (data.length) {
+
+      const { lat, lon, units, username } = userData;
+
+      if (!forecast.length) {
+        loadForecast(lat, lon, units);
+      }
+
+      if (!titles.length) {
+        loadTitles(username);
+      }
+    }
+
+  }, [userData]);
 
 
   /** Search OMDB for movies */

@@ -7,6 +7,7 @@ import { fetchTitlesFromAPI } from "../../Actions/actions";
 import Grid from '@mui/material/Grid';
 import { makeStyles } from "@mui/styles";
 import { Typography } from "@mui/material";
+import { ConstructionOutlined } from "@mui/icons-material";
 
 const useStyles = makeStyles({
   container: {
@@ -21,19 +22,24 @@ const MovieList = ({ username }) => {
   const titles = useSelector(store => store.titles);
   const dispatch = useDispatch();
 
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    async function loadTitles() {
-      await dispatch(fetchTitlesFromAPI(username));
-      setIsLoading(false);
-    }
+  // useEffect(() => {
 
-    if (isLoading) loadTitles();
+  //   async function loadTitles() {
+  //     await dispatch(fetchTitlesFromAPI(username));
+  //     setIsLoading(false);
+  //   }
 
-  }, [dispatch, isLoading]);
+  //   if (!titles.length) {
+  //     loadTitles();
+  //   } else {
+  //     setIsLoading(false);
+  //   }
 
-  if (isLoading) return (<b>Loading...</b>);
+  // }, [dispatch, isLoading]);
+
+  // if (isLoading) return (<b>Loading...</b>);
 
   if (!titles.length) return (<b>No movies to show!</b>);
 

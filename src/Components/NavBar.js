@@ -73,7 +73,8 @@ const NavBar = ({ loggedIn, logout }) => {
               : (<>
                 {loggedIn ? (
                   <>
-                    <Button component={NavLink} to="/" color="inherit">Search</Button>
+                    <Button component={NavLink} to="/home" color="inherit">Home</Button>
+                    <Button component={NavLink} to="/search" color="inherit">Search</Button>
                     <Button component={NavLink} to="/forecast" color="inherit">Forecast</Button>
                     <Button component={NavLink} to="/movies" color="inherit">Movies</Button>
                     <Button component={NavLink} to="/profile" color="inherit">Profile</Button>

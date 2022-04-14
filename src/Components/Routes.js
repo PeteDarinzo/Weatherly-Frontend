@@ -8,6 +8,7 @@ import HomeAnon from "./HomeAnon";
 import LoginForm from "./LoginForm";
 import Forecast from "./ForecastComponents/Forecast";
 import UserDashboard from "./ProfileComponents/UserDashboard";
+import SearchPage from "./SearchComponents/SearchPage";
 
 const Routes = ({ getMovies, searchResults, register, login, loggedIn, saveMovie, username, updateUser }) => {
 
@@ -17,6 +18,10 @@ const Routes = ({ getMovies, searchResults, register, login, loggedIn, saveMovie
       <Route exact path="/">
         {loggedIn ? (<Home getMovies={getMovies} searchResults={searchResults} saveMovie={saveMovie} />)
           : <HomeAnon />}
+      </Route>
+
+      <Route exact path="/search">
+        <SearchPage getMovies={getMovies} searchResults={searchResults} saveMovie={saveMovie} />
       </Route>
 
       <Route exact path="/movies" >
