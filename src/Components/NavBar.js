@@ -53,38 +53,50 @@ const NavBar = ({ loggedIn, logout }) => {
                 >
                   <MenuIcon />
                 </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={Boolean(anchorEl)}
-                  onClose={() => setAnchorEl(null)}
-                >
-                  {loggedIn
-                    ? (<>
-                      <MenuItem onClick={() => handleMenuClick('/home')}>Home</MenuItem>
-                      <MenuItem onClick={() => handleMenuClick('/search')}>Search</MenuItem>
-                      <MenuItem onClick={() => handleMenuClick('/forecast')}>Forecast</MenuItem>
-                      <MenuItem onClick={() => handleMenuClick('/movies')}>Movies</MenuItem>
-                      <MenuItem onClick={() => handleMenuClick('/profile')}>Profile</MenuItem>
-                      <MenuItem onClick={() => {
-                        logout();
-                        handleMenuClick('/profile');
-                      }}>Logout</MenuItem>
-                    </>)
-                    : (<>
-                      <MenuItem onClick={() => handleMenuClick('/signup')}>Signup</MenuItem>
-                      <MenuItem onClick={() => handleMenuClick('/login')}>Login</MenuItem>
-                    </>)}
-                </Menu>
+                {loggedIn
+                  ? (<Menu
+                    id="menu-appbar"
+                    anchorEl={anchorEl}
+                    anchorOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right',
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right',
+                    }}
+                    open={Boolean(anchorEl)}
+                    onClose={() => setAnchorEl(null)}
+                  >
+                    <MenuItem onClick={() => handleMenuClick('/home')}>Home</MenuItem>
+                    <MenuItem onClick={() => handleMenuClick('/search')}>Search</MenuItem>
+                    <MenuItem onClick={() => handleMenuClick('/forecast')}>Forecast</MenuItem>
+                    <MenuItem onClick={() => handleMenuClick('/movies')}>Movies</MenuItem>
+                    <MenuItem onClick={() => handleMenuClick('/profile')}>Profile</MenuItem>
+                    <MenuItem onClick={() => {
+                      logout();
+                      handleMenuClick('/profile');
+                    }}>Logout</MenuItem>
+                  </Menu>)
+                  : (<Menu
+                    id="menu-appbar"
+                    anchorEl={anchorEl}
+                    anchorOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right',
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right',
+                    }}
+                    open={Boolean(anchorEl)}
+                    onClose={() => setAnchorEl(null)}
+                  >
+                    <MenuItem onClick={() => handleMenuClick('/signup')}>Signup</MenuItem>
+                    <MenuItem onClick={() => handleMenuClick('/login')}>Login</MenuItem>
+                  </Menu>)}
               </>)
               : (<>
                 {loggedIn

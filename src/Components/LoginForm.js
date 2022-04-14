@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import FormControl from '@mui/material/FormControl';
+import Grid from '@mui/material/Grid';
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
@@ -43,38 +44,42 @@ const LoginForm = ({ login }) => {
 
 
   return (
-    <Container sx={{ width: "500px", marginTop: "20px" }}>
-      <Typography variant="h3">Log In</Typography>
-      <form onSubmit={handleSubmit}>
-        <FormControl fullWidth>
-          <TextField
-            className={classes.field}
-            name="username"
-            id="username"
-            label="Username"
-            variant="outlined"
-            value={formData.username}
-            onChange={handleChange}
-            fullWidth
-            required />
-          <TextField
-            className={classes.field}
-            type="password"
-            name="password"
-            id="password"
-            label="Password"
-            variant="outlined"
-            value={formData.password}
-            onChange={handleChange}
-            fullWidth
-            required />
-          <Button
-            type="submit"
-            size="large"
-            variant="contained"
-            color="info">Submit</Button>
-        </FormControl>
-      </form>
+    <Container>
+      <Grid container justifyContent="center">
+        <Grid item xs={12} sm={8} md={6}>
+          <Typography variant="h3">Log In</Typography>
+          <form onSubmit={handleSubmit}>
+            <FormControl fullWidth>
+              <TextField
+                className={classes.field}
+                name="username"
+                id="username"
+                label="Username"
+                variant="outlined"
+                value={formData.username}
+                onChange={handleChange}
+                fullWidth
+                required />
+              <TextField
+                className={classes.field}
+                type="password"
+                name="password"
+                id="password"
+                label="Password"
+                variant="outlined"
+                value={formData.password}
+                onChange={handleChange}
+                fullWidth
+                required />
+              <Button
+                type="submit"
+                size="large"
+                variant="contained"
+                color="info">Submit</Button>
+            </FormControl>
+          </form>
+        </Grid>
+      </Grid>
     </Container>
   );
 }

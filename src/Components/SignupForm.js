@@ -4,10 +4,8 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
+import Grid from '@mui/material/Grid';
 import { countryList, countryListAlpha2 } from "../countryData";
 import { makeStyles } from "@mui/styles";
 
@@ -48,59 +46,63 @@ const SignupForm = ({ register }) => {
 
 
   return (
-    <Container sx={{ width: "500px", marginTop: "20px" }}>
-      <Typography variant="h3">Sign Up</Typography>
-      <form onSubmit={handleSubmit}>
-        <FormControl fullWidth onSubmit={handleSubmit}>
-          <TextField
-            className={classes.field}
-            name="username"
-            id="username"
-            label="Username"
-            variant="outlined"
-            value={formData.username}
-            onChange={handleChange}
-            fullWidth
-            required />
-          <TextField
-            className={classes.field}
-            type="password"
-            name="password"
-            id="password"
-            label="Password"
-            variant="outlined"
-            value={formData.password}
-            onChange={handleChange}
-            fullWidth
-            required />
-          <TextField
-            className={classes.field}
-            name="postalCode"
-            id="postal-code"
-            label="Postal Code"
-            variant="outlined"
-            value={formData.zipCode}
-            onChange={handleChange}
-            fullWidth
-            required />
-          <TextField
-            className={classes.field}
-            name="countryCode"
-            id="country-code"
-            value={formData.countryCode}
-            label="Country"
-            onChange={handleChange}
-            select
-            fullWidth>
-            {countryList.map(country => <MenuItem key={countryListAlpha2[country]} value={countryListAlpha2[country]}>{country}</MenuItem>)}
-          </TextField>
-          <Button
-            size="large"
-            type="submit"
-            variant="contained"
-            color="info">Submit</Button>
-        </FormControl>
-      </form>
+    <Container>
+      <Grid container justifyContent="center">
+        <Grid item xs={12} sm={8} md={6}>
+          <Typography variant="h3">Sign Up</Typography>
+          <form onSubmit={handleSubmit}>
+            <FormControl fullWidth>
+              <TextField
+                className={classes.field}
+                name="username"
+                id="username"
+                label="Username"
+                variant="outlined"
+                value={formData.username}
+                onChange={handleChange}
+                fullWidth
+                required />
+              <TextField
+                className={classes.field}
+                type="password"
+                name="password"
+                id="password"
+                label="Password"
+                variant="outlined"
+                value={formData.password}
+                onChange={handleChange}
+                fullWidth
+                required />
+              <TextField
+                className={classes.field}
+                name="postalCode"
+                id="postal-code"
+                label="Postal Code"
+                variant="outlined"
+                value={formData.zipCode}
+                onChange={handleChange}
+                fullWidth
+                required />
+              <TextField
+                className={classes.field}
+                name="countryCode"
+                id="country-code"
+                value={formData.countryCode}
+                label="Country"
+                onChange={handleChange}
+                select
+                fullWidth>
+                {countryList.map(country => <MenuItem key={countryListAlpha2[country]} value={countryListAlpha2[country]}>{country}</MenuItem>)}
+              </TextField>
+              <Button
+                size="large"
+                type="submit"
+                variant="contained"
+                color="info">Submit</Button>
+            </FormControl>
+          </form>
+        </Grid>
+      </Grid>
     </Container >
   );
 }
