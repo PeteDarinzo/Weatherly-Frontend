@@ -12,8 +12,7 @@
 
 **Goal**
 
-Weatherly is an app intended to optimize your free time by generating a custom forecast based on your weather preferences, and keeping tracking of movies you intend to watch. 
-
+Weatherly is an app intended to optimize your free time by generating a custom forecast based on your weather preferences. Use the app to maintain a running "to-watch" list, and plan when to watch based on when the weather matches your watch conditions profile.
 
 **Data** 
 
@@ -39,38 +38,42 @@ The forecast page gives an eight day (including the current day) forecast. Each 
 
 ### Before beginning:
 
-The node package manager is required to run this app. The app also requires a Postgresql for the database.
+The [node package manager](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) is required to run this app. The app also requires [Postgresql](https://www.postgresql.org/download/) for the database.
 
 ## Instructions
 
-1. Get a free Open Weather key.
+1. Get a free Open Weather Map key.
 
 ```
 https://home.openweathermap.org/users/sign_up
 ```
 
-3. Clone the repo.
+2. Clone the repo.
 
 ```
 git clone https://github.com/PeteDarinzo/Weatherly-Frontend
 ```
 
-4. Install all packages
+3. Install all packages
 
 ```
 npm i
 ```
 
-5. Create a .env file in the root directory and add the Open Weather API key as follows
+4. Create a .env file in the root directory and add the Open Weather API key as follows
 
 ```
 REACT_APP_OPEN_WEATHER_API_KEY = [your_api_key]
 ```
 
-6. Run the app
+5. Add .env to the .gitignore folder so that the Open Weather Map key doesn't become accidentally shared.
+
+6. Install and run the backend server in accordance with [this repo](https://github.com/PeteDarinzo/Weatherly-Backend).
+
+7. Run the app
 
 ```
 npm start
 ```
 
-7. Open a web browser on the server's port. 
+8. Open a web browser on the server's port. 
