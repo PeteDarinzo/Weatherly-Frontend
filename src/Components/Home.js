@@ -93,7 +93,7 @@ const Home = () => {
               component={Link}
               to="/forecast"
               variant="outlined"
-              sx={{ m: "auto" }}
+              sx={{ m: 4 }}
               size="large"
             >
               SEE FULL FORECAST</Button>
@@ -117,7 +117,7 @@ const Home = () => {
               component={Link}
               to="/movies"
               variant="outlined"
-              sx={{ m: "auto" }}
+              sx={{ m: 4 }}
               size="large"
             >
               SEE ALL MOVIES</Button>

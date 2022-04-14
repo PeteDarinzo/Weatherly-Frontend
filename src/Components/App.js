@@ -25,7 +25,7 @@ function App() {
   const forecast = useSelector(store => store.forecast);
   const titles = useSelector(store => store.titles);
 
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [userToken, setUserToken] = useState("");
   const [userData, setUserData] = useState({});
   const [searchResults, setSearchResults] = useState([]);
@@ -59,7 +59,6 @@ function App() {
 
     async function loadTitles(username) {
       await dispatch(fetchTitlesFromAPI(username));
-      // setIsLoading(false);
     }
 
     async function loadForecast(lat, lon, units) {
@@ -70,6 +69,8 @@ function App() {
 
     if (data.length) {
 
+      setIsLoading(true);
+
       const { lat, lon, units, username } = userData;
 
       if (!forecast.length) {
@@ -79,6 +80,9 @@ function App() {
       if (!titles.length) {
         loadTitles(username);
       }
+
+      setIsLoading(false);
+
     }
 
   }, [userData]);
@@ -131,6 +135,8 @@ function App() {
     const updatedUser = await WeatherlyApi.updateUser(userData.username, data);
     dispatch(saveUserData(updatedUser));
   }
+
+  if (isLoading) return (<b>loading</b>)
 
   return (
     <ThemeProvider theme={theme}>
