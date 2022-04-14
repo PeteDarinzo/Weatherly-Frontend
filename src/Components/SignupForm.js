@@ -46,7 +46,7 @@ const SignupForm = ({ register }) => {
 
 
   return (
-    <Container>
+    <Container sx={{ p: 5 }}>
       <Grid container justifyContent="center">
         <Grid item xs={12} sm={8} md={6}>
           <Typography variant="h3">Sign Up</Typography>
