@@ -7,8 +7,6 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
-import { makeStyles } from "@mui/styles";
-
 
 /** Landing page for logged out users */
 

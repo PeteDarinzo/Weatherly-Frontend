@@ -63,9 +63,7 @@ const Home = () => {
 
         <ListItem>
           <Typography
-            // variant="body"
             sx={{ fontStyle: "italic", textAlign: "center", margin: "auto", mt: 5, fontSize: "2rem" }}
-            // color="primary"
           >"{WEATHER_PROVERBS[proverbNum]}"</Typography>
         </ListItem>
 

@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Capstone-2 (Ad Interim: Weather.ly)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Developer: Peter Darinzo
 
-## Available Scripts
+### View the app: 
 
-In the project directory, you can run:
+[Navigation](#navigation)  
+[Installation](#installation)  
+[Testing](#testing)
 
-### `npm start`
+## About 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Goal**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Weatherly is an app intended to optimize your free time by generating a custom forecast based on your weather preferences, and keeping tracking of movies you intend to watch. 
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Data** 
 
-### `npm run build`
+- The Open Movie Database [(OMDB)](http://www.omdbapi.com/) API for movie/TV show data.
+- The [OpenWeather](https://www.zipcodeapi.com/) API for weather data.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Navigation
+The logged out landing page gives an overview of the app's purpose. From there, users can signup, or login if they have an account. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To sign up, a user creates a username and password, and provides their location via postal code, and country. The app converts this information into latitude and longitude, and the city name, and stores it for retreiving forecasts.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+When a user logs in, they are presented with a homepage that provides a three day forecase, and a list of the four most recently added movies, if any. 
 
-### `npm run eject`
+From there, user's can navigate to their profile page, where they can update their watch preferences. User's may specify their ideal watch temperatures, e.g. below temperature A, and above temperature B, as well as the weather conditions that they would like to watch in. User's may also update their postal code and country, in case they move.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Users may navigate to the search page, where they can search for movies or TV shows by title. A list of results is displayed on the right hand side, and users may choose to save results.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The movies page displays a list of all movies the user has saved. Clicking on a move will show a detail page including the year, rating, and a synopsis for each movie. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The forecast page gives an eight day (including the current day) forecast. Each day has a colored scale, indicating how well the forecast matches the user's watch preferences.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Installation
 
-## Learn More
+### Before beginning:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The node package manager is required to run this app. The app also requires a Postgresql for the database.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Instructions
 
-### Code Splitting
+1. Get a free Open Movie Database key.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. Get a free Open Weather key.
 
-### Analyzing the Bundle Size
+3. Clone the repo.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+4. Install all packages
 
-### Making a Progressive Web App
+5. Create a .env file, and add the keys as follows
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+6. Run the app
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+7. Open a web browser on the server's port. 
