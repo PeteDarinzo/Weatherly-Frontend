@@ -77,3 +77,5 @@ npm start
 ```
 
 8. Open a web browser on the server's port. 
+
+## Testing
