@@ -64,6 +64,7 @@ const SignupForm = ({ register }) => {
             required />
           <TextField
             className={classes.field}
+            type="password"
             name="password"
             id="password"
             label="Password"
