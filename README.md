@@ -18,7 +18,7 @@ Weatherly is an app intended to optimize your free time by generating a custom f
 **Data** 
 
 - The Open Movie Database [(OMDB)](http://www.omdbapi.com/) API for movie/TV show data.
-- The [OpenWeather](https://www.zipcodeapi.com/) API for weather data.
+- The [OpenWeatherMap](https://openweathermap.org/) API for weather data.
 
 ## Navigation
 The logged out landing page gives an overview of the app's purpose. From there, users can signup, or login if they have an account. 
@@ -43,16 +43,34 @@ The node package manager is required to run this app. The app also requires a Po
 
 ## Instructions
 
-1. Get a free Open Movie Database key.
+1. Get a free Open Weather key.
 
-2. Get a free Open Weather key.
+```
+https://home.openweathermap.org/users/sign_up
+```
 
 3. Clone the repo.
 
+```
+git clone https://github.com/PeteDarinzo/Weatherly-Frontend
+```
+
 4. Install all packages
 
-5. Create a .env file, and add the keys as follows
+```
+npm i
+```
+
+5. Create a .env file in the root directory and add the Open Weather API key as follows
+
+```
+REACT_APP_OPEN_WEATHER_API_KEY = [your_api_key]
+```
 
 6. Run the app
+
+```
+npm start
+```
 
 7. Open a web browser on the server's port. 
