@@ -62,7 +62,11 @@ const Home = () => {
       <Stack spacing={4}>
 
         <ListItem>
-          <Typography variant="h4" sx={{ fontStyle: "italic", textAlign: "center", margin: "20px" }}>"{WEATHER_PROVERBS[proverbNum]}"</Typography>
+          <Typography
+            // variant="body"
+            sx={{ fontStyle: "italic", textAlign: "center", margin: "auto", mt: 5, fontSize: "2rem" }}
+            // color="primary"
+          >"{WEATHER_PROVERBS[proverbNum]}"</Typography>
         </ListItem>
 
         <ListItem>
@@ -95,6 +99,7 @@ const Home = () => {
               variant="outlined"
               sx={{ m: 4 }}
               size="large"
+              color="primary"
             >
               SEE FULL FORECAST</Button>
           </Grid>
@@ -119,6 +124,7 @@ const Home = () => {
               variant="outlined"
               sx={{ m: 4 }}
               size="large"
+              color="primary"
             >
               SEE ALL MOVIES</Button>
           </Grid>

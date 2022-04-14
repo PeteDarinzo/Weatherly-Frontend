@@ -8,6 +8,7 @@ import jwt_decode from "jwt-decode";
 import { fetchForecastFromAPI, saveUserData, sendMovieToAPI, fetchTitlesFromAPI } from '../Actions/actions';
 import { useDispatch, useSelector } from "react-redux";
 import Paper from '@mui/material/Paper';
+import { green } from '@mui/material/colors';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -17,6 +18,10 @@ function App() {
   const theme = createTheme({
     palette: {
       mode: "dark",
+      primary: {
+        main: '#039be5',
+      },
+      secondary: green,
     },
   });
 

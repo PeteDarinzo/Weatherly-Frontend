@@ -40,6 +40,7 @@ const HomeAnon = () => {
                 to="/signup"
                 variant="outlined"
                 sx={{ m: 2 }}
+                color="primary"
               >Signup</Button>
             </Typography>
             <Typography
@@ -49,7 +50,9 @@ const HomeAnon = () => {
                 component={Link}
                 to="/login"
                 variant="outlined"
-                sx={{ m: 2 }}>Login</Button>
+                sx={{ m: 2 }}
+                color="secondary"
+              >Login</Button>
             </Typography>
           </Box>
         </Grid>

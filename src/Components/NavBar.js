@@ -37,7 +37,11 @@ const NavBar = ({ loggedIn, logout }) => {
       <AppBar position="static">
         <Toolbar>
 
-          <Typography variant="h3" component="div" sx={{ flexGrow: 1 }}>
+          <Typography
+            variant="h3"
+            component="div"
+            sx={{ flexGrow: 1 }}
+            >
             Weatherly
           </Typography>
           <div>
@@ -101,17 +105,17 @@ const NavBar = ({ loggedIn, logout }) => {
               : (<>
                 {loggedIn
                   ? (<>
-                    <Button component={NavLink} to="/home" color="inherit">Home</Button>
+                    <Button component={NavLink} to="/home" color="secondary">Home</Button>
                     <Button component={NavLink} to="/search" color="inherit">Search</Button>
                     <Button component={NavLink} to="/forecast" color="inherit">Forecast</Button>
                     <Button component={NavLink} to="/movies" color="inherit">Movies</Button>
                     <Button component={NavLink} to="/profile" color="inherit">Profile</Button>
-                    <Button component={NavLink} to="/home" onClick={logout} color="inherit">Logout</Button>
+                    <Button component={NavLink} to="/home" onClick={logout} color="warning">Logout</Button>
                   </>
                   )
                   : (<>
-                    <Button component={NavLink} to="/signup" color="inherit">Signup</Button>
-                    <Button component={NavLink} to="/login" color="inherit">Login</Button>
+                    <Button component={NavLink} to="/signup" color="primary">Signup</Button>
+                    <Button component={NavLink} to="/login" color="secondary">Login</Button>
                   </>
                   )}
               </>)

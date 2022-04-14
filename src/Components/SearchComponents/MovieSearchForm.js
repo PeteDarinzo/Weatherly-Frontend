@@ -64,7 +64,7 @@ const MovieSearchForm = ({ getMovies }) => {
             <Button
               type="submit"
               variant="contained"
-              color="info"
+              color="primary"
               size="large">Search</Button>
           </FormControl>
         </form>

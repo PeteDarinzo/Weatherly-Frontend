@@ -98,7 +98,7 @@ const SignupForm = ({ register }) => {
                 size="large"
                 type="submit"
                 variant="contained"
-                color="info">Submit</Button>
+                color="primary">Submit</Button>
             </FormControl>
           </form>
         </Grid>

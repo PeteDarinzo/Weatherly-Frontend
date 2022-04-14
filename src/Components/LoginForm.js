@@ -75,7 +75,7 @@ const LoginForm = ({ login }) => {
                 type="submit"
                 size="large"
                 variant="contained"
-                color="info">Submit</Button>
+                color="primary">Submit</Button>
             </FormControl>
           </form>
         </Grid>
