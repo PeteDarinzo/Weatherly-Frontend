@@ -8,10 +8,11 @@ import { CardActionArea } from '@mui/material';
 
 const MovieCard = ({ id, title, img, plot }) => {
   return (
-    <Card sx={{height: '100%'}}>
+    <Card sx={{ height: '100%', backgroundColor: "#2b2b2b" }}>
       <CardActionArea
         component={Link}
-        to={`/movies/${id}`}>
+        to={`/movies/${id}`}
+        sx={{ height: "100%" }}>
         <CardMedia
           component="img"
           image={img}

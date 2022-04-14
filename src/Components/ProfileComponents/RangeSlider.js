@@ -103,7 +103,6 @@ export default function RangeSlider({ handleTempChange, units, vals }) {
         getAriaValueText={valuetext}
         disableSwap
         track="inverted"
-        // orientation="vertical"
         min={units === "imperial" ? 32 : 0}
         max={units === "imperial" ? 100 : 40}
         marks={units === "imperial" ? farMarks : celMarks}

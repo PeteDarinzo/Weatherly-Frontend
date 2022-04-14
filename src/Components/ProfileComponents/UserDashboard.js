@@ -28,7 +28,6 @@ const useStyles = makeStyles({
 
 const UserDashboard = ({ updateUser }) => {
 
-  // const classes = useStyles();
   const [isLoading, setIsLoading] = useState(true);
   const userData = useSelector(store => store.user);
   const { postalCode, countryCode, minTemp, maxTemp, units, thunderstorm, drizzle, rain, snow, overcast } = userData;

@@ -82,9 +82,10 @@ function getMovie(movie) {
  * https://masteringjs.io/tutorials/axios/delete-with-body#:~:text=To%20send%20a%20request%20body,should%20set%20the%20data%20option.&text=Remember%20that%20the%202nd%20parameter,like%20you%20can%20with%20axios.
  */
 
-export function deleteFromWatchList(userId, movieId) {
+export function deleteFromWatchList(username, movieId) {
   return async function (dispatch) {
-    await axios.delete(`${API_URL}/users/${userId}/movies`, { data: { movieId } });
+    // await axios.delete(`${API_URL}/users/${userId}/movies`, { data: { movieId } });
+    WeatherlyApi.removeFromWatchList(username, movieId)
     dispatch(deleteMovie(movieId));
   }
 
@@ -100,7 +101,6 @@ export function deleteFromWatchList(userId, movieId) {
 /** FETCH FORECAST */
 
 export function fetchForecastFromAPI(lat, lon, units) {
-  console.log("requesting forecast");
   return async function (dispatch) {
     const res = await axios.get(OPEN_WEATHER_URL, {
       params: {

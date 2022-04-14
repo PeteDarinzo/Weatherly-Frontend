@@ -94,6 +94,7 @@ const Home = () => {
               to="/forecast"
               variant="outlined"
               sx={{ m: "auto" }}
+              size="large"
             >
               SEE FULL FORECAST</Button>
           </Grid>
@@ -117,56 +118,12 @@ const Home = () => {
               to="/movies"
               variant="outlined"
               sx={{ m: "auto" }}
+              size="large"
             >
               SEE ALL MOVIES</Button>
           </Grid>
         </ListItem>
-
       </Stack>
-
-      {/* <Grid container>
-        <Grid item xs={12}>
-          <Typography variant="h6" sx={{ fontStyle: "italic", textAlign: "center", margin: "20px" }}>"{WEATHER_PROVERBS[proverbNum]}"</Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography>
-            Next three days
-          </Typography>
-          <Grid container spacing={3}>
-            {abbreviatedForecast.map(day => {
-              let compatibility = determineMatch(day, userData);
-              return (
-                <Grid item xs={12} sm={6} md={3} key={uuid()}>
-                  <ForecastPaper
-                    day={day.name}
-                    date={day.date}
-                    min={day.temp.min}
-                    max={day.temp.max}
-                    feelsLike={day.feels_like.day}
-                    description={(day.weather[0]).description}
-                    icon={(day.weather[0]).icon}
-                    units={userData.units === "imperial" ? "F" : "C"}
-                    compatibility={compatibility} />
-                </Grid>
-              );
-            })}
-            <Button component={Link} to="/forecast">SEE FULL FORECAST</Button>
-          </Grid>
-        </Grid>
-        <Grid container spacing={4} >
-          <Typography>
-            Movies:
-          </Typography>
-          {titleSelection.map(m => {
-            return (
-              <Grid item xs={12} sm={4} md={3} lg={2} key={m.id}>
-                <MovieCard id={m.id} title={m.title} img={m.posterUrl} plot={m.plot} />
-              </Grid>);
-          })}
-          <Button component={Link} to="/movies">SEE ALL MOVIES</Button>
-        </Grid>
-      </Grid> */}
-
     </Container>
   );
 }

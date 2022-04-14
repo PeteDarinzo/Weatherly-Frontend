@@ -16,36 +16,50 @@ const Routes = ({ getMovies, searchResults, register, login, loggedIn, saveMovie
     <Switch>
 
       <Route exact path="/">
-        {loggedIn ? (<Home getMovies={getMovies} searchResults={searchResults} saveMovie={saveMovie} />)
+        {loggedIn ? (<Home />)
           : <HomeAnon />}
       </Route>
 
       <Route exact path="/search">
-        <SearchPage getMovies={getMovies} searchResults={searchResults} saveMovie={saveMovie} />
+        {loggedIn
+          ? <SearchPage getMovies={getMovies} searchResults={searchResults} saveMovie={saveMovie} />
+          : <Redirect to="/login" />}
       </Route>
 
-      <Route exact path="/movies" >
-        <MovieList username={username} />
+      <Route exact path="/movies">
+        {loggedIn
+          ? <MovieList username={username} />
+          : <Redirect to="/login" />}
       </Route>
 
       <Route exact path="/forecast" >
-        <Forecast />
+        {loggedIn
+          ? <Forecast />
+          : <Redirect to="/login" />}
       </Route>
 
       <Route exact path="/movies/:movieId">
-        <MovieDetail />
+        {loggedIn
+          ? <MovieDetail />
+          : <Redirect to="/login" />}
       </Route>
 
       <Route exact path="/profile">
-        <UserDashboard updateUser={updateUser} />
+        {loggedIn
+          ? <UserDashboard updateUser={updateUser} />
+          : <Redirect to="/login" />}
       </Route>
 
       <Route exact path="/signup">
-        <SignupForm register={register} />
+        {!loggedIn
+          ? <SignupForm register={register} />
+          : <Redirect to="/home" />}
       </Route>
 
       <Route exact path="/login">
-        <LoginForm login={login} />
+        {!loggedIn
+          ? <LoginForm login={login} />
+          : <Redirect to="/home" />}
       </Route>
 
       <Redirect to="/" />

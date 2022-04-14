@@ -7,6 +7,8 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
+import { makeStyles } from "@mui/styles";
+
 
 /** Landing page for logged out users */
 
@@ -27,17 +29,27 @@ const HomeAnon = () => {
           <Typography sx={{ textAlign: "left" }}>Let the app find the next inclement weather day for you.</Typography>
         </Grid>
         <Grid item xs={12}>
-          <Box 
+          <Box
           // sx={{ width: "250px", backgroundColor: "" }}
           >
             <Typography
-              sx={{ margin: "10px", textAlign: "right" }}>
+              sx={{ margin: "10px", textAlign: "left" }}>
               New to Weatherly?
-              <Button component={Link} to="/signup" variant="outlined">Signup</Button></Typography>
+              <Button
+                component={Link}
+                to="/signup"
+                variant="outlined"
+                sx={{ m: 2 }}
+              >Signup</Button>
+            </Typography>
             <Typography
-              sx={{ margin: "10px", textAlign: "right" }}>
+              sx={{ margin: "10px", textAlign: "left" }}>
               Already a user?
-              <Button component={Link} to="/login" variant="outlined">Login</Button>
+              <Button
+                component={Link}
+                to="/login"
+                variant="outlined"
+                sx={{ m: 2 }}>Login</Button>
             </Typography>
           </Box>
         </Grid>

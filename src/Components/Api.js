@@ -85,6 +85,13 @@ class WeatherlyApi {
     return res;
   }
 
+  /** remove a movie from a user's watchlist */
+
+  static async removeFromWatchList(username, movieId) {
+    let res = await this.request(`users/${username}/movies`, { movieId }, "delete")
+    return res;
+  }
+
   /** Get an existing user's profile data */
 
   static async getUserData(username) {

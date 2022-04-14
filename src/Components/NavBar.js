@@ -11,10 +11,12 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Button from '@mui/material/Button';
 import { NavLink } from "react-router-dom";
-
+import { useHistory } from 'react-router-dom';
 
 
 const NavBar = ({ loggedIn, logout }) => {
+
+  const history = useHistory();
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -24,7 +26,8 @@ const NavBar = ({ loggedIn, logout }) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleMenuClick = (url) => {
+    history.push(url)
     setAnchorEl(null);
   };
 
@@ -63,11 +66,13 @@ const NavBar = ({ loggedIn, logout }) => {
                     horizontal: 'right',
                   }}
                   open={Boolean(anchorEl)}
-                  onClose={handleClose}
+                  onClose={() => setAnchorEl(null)}
                 >
-                  <MenuItem onClick={handleClose}>Forecast</MenuItem>
-                  <MenuItem onClick={handleClose}>Movies</MenuItem>
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  <MenuItem onClick={() => handleMenuClick('/home')}>Home</MenuItem>
+                  <MenuItem onClick={() => handleMenuClick('/search')}>Search</MenuItem>
+                  <MenuItem onClick={() => handleMenuClick('/forecast')}>Forecast</MenuItem>
+                  <MenuItem onClick={() => handleMenuClick('/movies')}>Movies</MenuItem>
+                  <MenuItem onClick={() => handleMenuClick('/profile')}>Profile</MenuItem>
                 </Menu>
               </>)
               : (<>
@@ -92,7 +97,7 @@ const NavBar = ({ loggedIn, logout }) => {
           </div>
         </Toolbar>
       </AppBar>
-    </Box>
+    </Box >
   );
 }
 

@@ -24,14 +24,9 @@ const ForecastPaper = ({ day, date, description, min, max, feelsLike, icon, unit
       style={{
         padding: 8,
         border: "1px solid black",
-        // justifyContent: "center",
-        // alignItems: "center",
         textAlign: "center",
       }}
     >
-      {/* <Typography>{day}</Typography>
-      <Typography>{date}</Typography> */}
-
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Typography sx={{ fontSize: "1.7rem" }}>{day}</Typography>
@@ -64,13 +59,6 @@ const ForecastPaper = ({ day, date, description, min, max, feelsLike, icon, unit
             variant="body1">
             {description}
           </Typography>
-          {/* <Typography>
-        Min: {min} {units}
-      </Typography>
-      <Typography>
-        Max: {max} {units}
-      </Typography> */}
-
         </Grid>
       </Grid>
     </Paper >

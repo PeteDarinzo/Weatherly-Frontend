@@ -8,10 +8,8 @@ import jwt_decode from "jwt-decode";
 import { fetchForecastFromAPI, saveUserData, sendMovieToAPI, fetchTitlesFromAPI } from '../Actions/actions';
 import { useDispatch, useSelector } from "react-redux";
 import Paper from '@mui/material/Paper';
-import Container from '@mui/material/Container';
 
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
-import { TitleSharp } from '@mui/icons-material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
 function App() {

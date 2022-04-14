@@ -45,7 +45,6 @@ const MovieDetail = () => {
     history.push("/");
   }
 
-
   if (!movie) return (<b>Loading...</b>)
 
   return (
@@ -69,7 +68,6 @@ const MovieDetail = () => {
             >
               Remove
             </Button>
-
           </Stack>
         </Grid>
       </Grid>

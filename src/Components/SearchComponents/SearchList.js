@@ -4,6 +4,7 @@ import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 
 import { makeStyles } from "@mui/styles";
+import { Typography } from "@mui/material";
 
 const useStyles = makeStyles({
   container: {
@@ -16,6 +17,11 @@ const SearchList = ({ movies, saveMovie }) => {
 
   const classes = useStyles();
 
+  if(movies === undefined) {
+    return (
+      <Typography>No results</Typography>
+    )
+  }
 
   return (
     <Container className={classes.container} maxWidth="sm">

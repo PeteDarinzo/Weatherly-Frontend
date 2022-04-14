@@ -1,28 +1,16 @@
 import { Container, TextField, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import RangeSlider from "./RangeSlider";
+import React, { useState } from "react";
 import { countryList, countryListAlpha2, codeListAlpha2 } from "../../countryData";
 import { makeStyles } from "@mui/styles";
 import MenuItem from '@mui/material/MenuItem';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
-import FormGroup from '@mui/material/FormGroup';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import { shadows } from '@mui/system';
 
 
 const useStyles = makeStyles({
   box: {
     padding: 40,
-    // margin: 20
-  },
-  form: {
-    // margin: 40
   },
   field: {
     marginTop: 20,

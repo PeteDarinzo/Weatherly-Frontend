@@ -20,32 +20,12 @@ const MovieList = ({ username }) => {
   const classes = useStyles();
 
   const titles = useSelector(store => store.titles);
-  const dispatch = useDispatch();
-
-  // const [isLoading, setIsLoading] = useState(true);
-
-  // useEffect(() => {
-
-  //   async function loadTitles() {
-  //     await dispatch(fetchTitlesFromAPI(username));
-  //     setIsLoading(false);
-  //   }
-
-  //   if (!titles.length) {
-  //     loadTitles();
-  //   } else {
-  //     setIsLoading(false);
-  //   }
-
-  // }, [dispatch, isLoading]);
-
-  // if (isLoading) return (<b>Loading...</b>);
 
   if (!titles.length) return (<b>No movies to show!</b>);
 
   return (
     <Container className={classes.container}>
-      <Typography my={5} variant="h2">Your Movies:</Typography>
+      <Typography mb={4} variant="h2">Your Movies:</Typography>
       <Grid container spacing={4} >
         {titles.map(m => {
           return (
