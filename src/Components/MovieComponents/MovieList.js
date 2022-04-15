@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   }
 });
 
-const MovieList = ({ username }) => {
+const MovieList = () => {
 
   const classes = useStyles();
 

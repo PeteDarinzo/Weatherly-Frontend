@@ -5,8 +5,8 @@ import {
 } from "../Actions/actionTypes";
 
 
-function makeTitleFromMovie({ id, title, posterUrl }) {
-  return { id, title, posterUrl };
+function makeTitleFromMovie({ imdbID, Title, Poster, Year }) {
+  return { id: imdbID, title: Title, posterUrl: Poster, year: Year };
 }
 
 const INITIAL_STATE = [];

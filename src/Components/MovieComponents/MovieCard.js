@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-const MovieCard = ({ id, title, img, plot }) => {
+const MovieCard = ({ id, title, img, year }) => {
   return (
     <Card sx={{ height: '100%', backgroundColor: "#2b2b2b" }}>
       <CardActionArea
@@ -20,13 +20,10 @@ const MovieCard = ({ id, title, img, plot }) => {
         />
         <CardContent>
           <Typography
-            variant="subtitle1" >
+            variant="subtitle1"
+            sx={{ fontSize: "1.2rem" }}
+          >
             {title}
-          </Typography>
-          <Typography
-            variant="body2"
-            color="text.secondary">
-            {plot}
           </Typography>
         </CardContent>
       </CardActionArea>
