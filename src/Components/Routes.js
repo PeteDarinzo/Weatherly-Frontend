@@ -10,7 +10,7 @@ import Forecast from "./ForecastComponents/Forecast";
 import UserDashboard from "./ProfileComponents/UserDashboard";
 import SearchPage from "./SearchComponents/SearchPage";
 
-const Routes = ({ getMovies, searchResults, register, login, loggedIn, saveMovie, username, updateUser }) => {
+const Routes = ({ getMovies, searchResults, register, login, loggedIn, saveMovie, removeMovie, username, updateUser }) => {
 
   return (
     <Switch>
@@ -40,7 +40,7 @@ const Routes = ({ getMovies, searchResults, register, login, loggedIn, saveMovie
 
       <Route exact path="/movies/:movieId">
         {loggedIn
-          ? <MovieDetail />
+          ? <MovieDetail removeMovie={removeMovie} />
           : <Redirect to="/login" />}
       </Route>
 

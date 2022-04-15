@@ -62,8 +62,14 @@ const Home = () => {
       <Stack spacing={4}>
 
         <ListItem>
+          <Typography variant="h2">
+            Hello, {userData.username}!
+          </Typography>
+        </ListItem>
+
+        <ListItem>
           <Typography
-            sx={{ fontStyle: "italic", textAlign: "center", margin: "auto", mt: 5, fontSize: "2rem" }}
+            sx={{ fontStyle: "italic", textAlign: "center", margin: "auto", fontSize: "2rem" }}
           >"{WEATHER_PROVERBS[proverbNum]}"</Typography>
         </ListItem>
 

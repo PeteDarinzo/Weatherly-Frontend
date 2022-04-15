@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 });
 
 
-const MovieDetail = () => {
+const MovieDetail = ({ removeMovie }) => {
 
   const classes = useStyles();
 
@@ -41,7 +41,7 @@ const MovieDetail = () => {
   }, [dispatch, movieId, movie]);
 
   function handleClick() {
-    dispatch(deleteFromWatchList("peter", movieId));
+    removeMovie(movieId);
     history.push("/");
   }
 

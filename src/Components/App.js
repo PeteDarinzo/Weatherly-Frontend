@@ -5,7 +5,7 @@ import NavBar from "./NavBar";
 import Routes from "./Routes";
 import WeatherlyApi from './Api';
 import jwt_decode from "jwt-decode";
-import { fetchForecastFromAPI, saveUserData, sendMovieToAPI, fetchTitlesFromAPI } from '../Actions/actions';
+import { fetchForecastFromAPI, saveUserData, sendMovieToAPI, fetchTitlesFromAPI, deleteFromWatchList } from '../Actions/actions';
 import { useDispatch, useSelector } from "react-redux";
 import Paper from '@mui/material/Paper';
 import { green } from '@mui/material/colors';
@@ -136,6 +136,10 @@ function App() {
     dispatch(sendMovieToAPI(movie, userData.username));
   }
 
+  function removeMovie(movieId) {
+    dispatch(deleteFromWatchList(userData.username, movieId));
+  }
+
   async function updateUser(data) {
     const updatedUser = await WeatherlyApi.updateUser(userData.username, data);
     dispatch(saveUserData(updatedUser));
@@ -154,6 +158,7 @@ function App() {
           login={login}
           loggedIn={userToken}
           saveMovie={saveMovie}
+          removeMovie={removeMovie}
           username={userData.username}
           updateUser={updateUser}
         />
