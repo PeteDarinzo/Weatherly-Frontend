@@ -9,6 +9,7 @@ import { fetchForecastFromAPI, saveUserData, sendMovieToAPI, fetchTitlesFromAPI,
 import { useDispatch, useSelector } from "react-redux";
 import Paper from '@mui/material/Paper';
 import { green } from '@mui/material/colors';
+import CustomizedSnackbars from './Snackbar';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -151,6 +152,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Paper sx={{ minHeight: "100vh" }}>
         <NavBar loggedIn={userToken} logout={logout} />
+        <CustomizedSnackbars />
         <Routes
           getMovies={getMovies}
           searchResults={searchResults}

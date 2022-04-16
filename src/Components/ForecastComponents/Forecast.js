@@ -18,11 +18,8 @@ const Forecast = () => {
 
   return (
     <Container>
-      <Typography
-        variant="h2"
-        sx={{ margin: "20px" }}
-      >
-        Forecast for {userData.city}
+      <Typography variant="h2" sx={{ m: 5 }}>
+        Forecast for {userData.city}:
       </Typography>
       <Grid container spacing={3}>
         {forecast.map(day => {

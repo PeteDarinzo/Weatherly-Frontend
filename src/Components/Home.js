@@ -62,7 +62,7 @@ const Home = () => {
       <Stack spacing={4}>
 
         <ListItem>
-          <Typography variant="h2">
+          <Typography variant="h2" sx={{mt: 3}}>
             Hello, {userData.username}!
           </Typography>
         </ListItem>

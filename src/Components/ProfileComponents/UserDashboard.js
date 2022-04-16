@@ -46,6 +46,7 @@ const UserDashboard = ({ updateUser }) => {
 
   return (
     <Container>
+      <Typography sx={{ m: 5 }} variant="h2">Your profile:</Typography>
       <Grid container
         alignItems="center"
         justifyContent="center"

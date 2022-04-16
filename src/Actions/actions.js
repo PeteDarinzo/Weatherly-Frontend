@@ -6,10 +6,13 @@ import {
   DELETE_MOVIE,
   FETCH_MOVIE,
   GET_FORECAST,
-  UPDATE_USER
+  UPDATE_USER,
+  SET_SNACKBAR
 } from "./actionTypes";
 import CircularlyLinkedList from "../Components/DataStructures/CircularLinkedList";
 import { DateTime } from "luxon";
+import snackbar from "../Reducers/snackbar";
+import { snackbarContentClasses } from "@mui/material";
 
 const OPEN_WEATHER_API_KEY = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
 
@@ -136,5 +139,16 @@ export function saveUserData(userData) {
   return {
     type: UPDATE_USER,
     userData
+  }
+}
+
+/** SET SNACKBAR */
+
+export function setSnackbar(snackbarOpen, snackbarType = "success", snackbarMessage = "") {
+  return {
+    type: SET_SNACKBAR,
+    snackbarOpen,
+    snackbarType,
+    snackbarMessage
   }
 }

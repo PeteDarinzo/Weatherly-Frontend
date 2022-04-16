@@ -42,7 +42,7 @@ const MovieDetail = ({ removeMovie }) => {
 
   function handleClick() {
     removeMovie(movieId);
-    history.push("/");
+    history.push("/movies");
   }
 
   if (!movie) return (<b>Loading...</b>)
