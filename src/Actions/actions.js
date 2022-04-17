@@ -11,8 +11,6 @@ import {
 } from "./actionTypes";
 import CircularlyLinkedList from "../Components/DataStructures/CircularLinkedList";
 import { DateTime } from "luxon";
-import snackbar from "../Reducers/snackbar";
-import { snackbarContentClasses } from "@mui/material";
 
 const OPEN_WEATHER_API_KEY = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
 

@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Paper from '@mui/material/Paper';
 import { green } from '@mui/material/colors';
 import CustomizedSnackbars from './Snackbar';
+import { setSnackbar } from "../Actions/actions";
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -29,13 +30,12 @@ function App() {
   const history = useHistory();
   const dispatch = useDispatch();
   const forecast = useSelector(store => store.forecast);
-  const titles = useSelector(store => store.titles);
+  // const titles = useSelector(store => store.titles);
 
   const [isLoading, setIsLoading] = useState(false);
   const [userToken, setUserToken] = useState("");
   const [userData, setUserData] = useState({});
   const [searchResults, setSearchResults] = useState([]);
-  const [signupError, setSignupError] = useState("");
 
   useEffect(() => {
     if (localStorage.getItem("weatherlyToken")) {
@@ -83,9 +83,9 @@ function App() {
         loadForecast(lat, lon, units);
       }
 
-      if (!titles.length) {
+      // if (!titles.length) {
         loadTitles(username);
-      }
+      // }
 
       setIsLoading(false);
 
@@ -106,39 +106,48 @@ function App() {
   async function register(userData) {
     const { username, password, postalCode, countryCode } = userData;
     try {
-      // setIsLoading(true);
       const token = await WeatherlyApi.register(userData);
       localStorage.setItem("weatherlyToken", JSON.stringify(token));
       setUserToken(token);
       history.push("/");
     } catch (err) {
-      setSignupError(err[0]);
-      // setIsLoading(false);
+      dispatch(setSnackbar(true, "error", "Username Taken"));
     }
   }
 
   async function login(user) {
-    const userObj = {
-      username: user.username,
-      password: user.password,
+    try {
+      const userObj = {
+        username: user.username,
+        password: user.password,
+      }
+      const token = await WeatherlyApi.getToken(userObj);
+      localStorage.setItem("weatherlyToken", JSON.stringify(token));
+      setUserToken(token);
+      history.push("/");
+    } catch (e) {
+      dispatch(setSnackbar(true, "error", "Incorrect Username or Password"));
     }
-    const token = await WeatherlyApi.getToken(userObj);
-    localStorage.setItem("weatherlyToken", JSON.stringify(token));
-    setUserToken(token);
-    history.push("/");
   }
 
   function logout() {
     localStorage.removeItem("weatherlyToken");
     setUserToken("");
+    dispatch(setSnackbar(true, "success", "Logged Out!"));
   }
 
-  function saveMovie(movie) {
-    dispatch(sendMovieToAPI(movie, userData.username));
+  async function saveMovie(movie) {
+    try {
+      await dispatch(sendMovieToAPI(movie, userData.username));
+      dispatch(setSnackbar(true, "success", "Saved!"));
+    } catch (e) {
+      dispatch(setSnackbar(true, "warning", "Already Saved!"));
+    }
   }
 
   function removeMovie(movieId) {
     dispatch(deleteFromWatchList(userData.username, movieId));
+    dispatch(setSnackbar(true, "success", "Deleted!"));
   }
 
   async function updateUser(data) {

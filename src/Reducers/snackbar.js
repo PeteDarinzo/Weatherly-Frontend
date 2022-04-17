@@ -6,7 +6,9 @@ import {
 const INITIAL_STATE = {
   snackbarOpen: false,
   snackbarType: "success",
-  snackbarMessage: ""
+  snackbarMessage: "",
+  snackbarVertical: "top",
+  snackbarHorizontal: "center"
 };
 
 export default function snackbar(state = INITIAL_STATE, action) {

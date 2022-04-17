@@ -17,7 +17,7 @@ const SearchList = ({ movies, saveMovie }) => {
 
   const classes = useStyles();
 
-  if(movies === undefined) {
+  if (movies === undefined) {
     return (
       <Typography>No results</Typography>
     )
