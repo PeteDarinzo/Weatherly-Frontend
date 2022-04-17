@@ -30,7 +30,6 @@ function App() {
   const history = useHistory();
   const dispatch = useDispatch();
   const forecast = useSelector(store => store.forecast);
-  // const titles = useSelector(store => store.titles);
 
   const [isLoading, setIsLoading] = useState(false);
   const [userToken, setUserToken] = useState("");
@@ -57,8 +56,6 @@ function App() {
 
     if (userToken) loadUserData();
 
-    setSignupError("");
-
   }, [userToken]);
 
   useEffect(() => {
@@ -83,14 +80,10 @@ function App() {
         loadForecast(lat, lon, units);
       }
 
-      // if (!titles.length) {
-        loadTitles(username);
-      // }
-
+      loadTitles(username);
+      setSearchResults([]);
       setIsLoading(false);
-
     }
-
   }, [userData]);
 
 
