@@ -5,8 +5,8 @@ import NavBar from "./NavBar";
 import Routes from "./Routes";
 import WeatherlyApi from './Api';
 import jwt_decode from "jwt-decode";
-import { fetchForecastFromAPI, saveUserData, sendMovieToAPI, fetchTitlesFromAPI, deleteFromWatchList } from '../Actions/actions';
-import { useDispatch, useSelector } from "react-redux";
+import { fetchForecastFromAPI, saveUserData, sendMovieToAPI, fetchTitlesFromAPI, deleteFromWatchList, resetStore } from '../Actions/actions';
+import { useDispatch } from "react-redux";
 import Paper from '@mui/material/Paper';
 import { green } from '@mui/material/colors';
 import CustomizedSnackbars from './Snackbar';
@@ -28,7 +28,6 @@ function App() {
 
   const history = useHistory();
   const dispatch = useDispatch();
-  const forecast = useSelector(store => store.forecast);
 
   const [isLoading, setIsLoading] = useState(false);
   const [userToken, setUserToken] = useState("");
@@ -76,15 +75,8 @@ function App() {
     const data = Object.keys(userData);
 
     if (data.length) {
-
-      setIsLoading(true);
-
       const { lat, lon, units, username } = userData;
-
-      if (!forecast.length) {
-        loadForecast(lat, lon, units);
-      }
-
+      loadForecast(lat, lon, units);
       loadTitles(username);
       setSearchResults([]);
       setIsLoading(false);
@@ -95,13 +87,15 @@ function App() {
   /** Register a new user */
 
   async function register(userData) {
+    setIsLoading(true);
     try {
       const token = await WeatherlyApi.register(userData);
       localStorage.setItem("weatherlyToken", JSON.stringify(token));
       setUserToken(token);
-      history.push("/");
+      history.push("/home");
       dispatch(setSnackbar(true, "success", "Welcome to Weatherly! Head to the profile page to setup your weather preferences."));
     } catch (err) {
+      setIsLoading(false);
       if (err[0].includes("Duplicate")) {
         dispatch(setSnackbar(true, "error", "Username Taken."));
       } else {
@@ -110,8 +104,10 @@ function App() {
     }
   }
 
-  /** Login an existing user */
+  /** Log in an existing user */
+
   async function login(user) {
+    setIsLoading(true);
     try {
       const userObj = {
         username: user.username,
@@ -120,9 +116,10 @@ function App() {
       const token = await WeatherlyApi.getToken(userObj);
       localStorage.setItem("weatherlyToken", JSON.stringify(token));
       setUserToken(token);
-      history.push("/");
+      history.push("/home");
       dispatch(setSnackbar(true, "success", "Welcome back!"));
     } catch (e) {
+      setIsLoading(false);
       dispatch(setSnackbar(true, "error", "Incorrect Username or Password"));
     }
   }
@@ -131,6 +128,7 @@ function App() {
   function logout() {
     localStorage.removeItem("weatherlyToken");
     setUserToken("");
+    dispatch(resetStore());
     dispatch(setSnackbar(true, "success", "Logged Out!"));
   }
 

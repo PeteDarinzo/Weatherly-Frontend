@@ -6,3 +6,4 @@ export const FETCH_MOVIE = "FETCH_MOVIE";
 export const GET_FORECAST = "GET_FORECAST";
 export const UPDATE_USER = "UPDATE_USER";
 export const SET_SNACKBAR = "SET_SNACKBAR";
+export const USER_LOGOUT = "USER_LOGOUT";

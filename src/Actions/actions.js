@@ -7,7 +7,8 @@ import {
   FETCH_MOVIE,
   GET_FORECAST,
   UPDATE_USER,
-  SET_SNACKBAR
+  SET_SNACKBAR,
+  USER_LOGOUT
 } from "./actionTypes";
 import CircularlyLinkedList from "../Components/DataStructures/CircularLinkedList";
 import { DateTime } from "luxon";
@@ -172,5 +173,16 @@ export function setSnackbar(snackbarOpen, snackbarType = "success", snackbarMess
     snackbarOpen,
     snackbarType,
     snackbarMessage
+  }
+}
+
+/** LOGOUT
+ * 
+ * User logout will reset all reducers
+ */
+
+export function resetStore() {
+  return {
+    type: USER_LOGOUT
   }
 }

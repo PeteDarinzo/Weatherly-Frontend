@@ -53,7 +53,8 @@ const Home = () => {
 
   const forecast = useSelector(store => store.forecast);
   const userData = useSelector(store => store.user);
-  const titles = useSelector(store => store.titles);
+  const titles = useSelector(store => store.titles);  
+
 
   // show upcoming three day forecast and four recent'y saved movies on landing page
   const abbreviatedForecast = forecast.slice(1, 4); 

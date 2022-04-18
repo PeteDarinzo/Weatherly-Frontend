@@ -1,5 +1,4 @@
-import { useReducer } from "react";
-import { UPDATE_USER } from "../Actions/actionTypes";
+import { UPDATE_USER, USER_LOGOUT } from "../Actions/actionTypes";
 
 
 
@@ -10,6 +9,9 @@ export default function user(state = INITIAL_STATE, action) {
 
     case UPDATE_USER:
       return { ...action.userData };
+
+    case USER_LOGOUT:
+      return INITIAL_STATE;
 
     default:
       return state;

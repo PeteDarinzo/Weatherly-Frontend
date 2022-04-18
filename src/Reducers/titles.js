@@ -1,7 +1,8 @@
 import {
   DELETE_MOVIE,
   FETCH_TITLES,
-  SAVE_MOVIE
+  SAVE_MOVIE,
+  USER_LOGOUT
 } from "../Actions/actionTypes";
 
 
@@ -22,6 +23,9 @@ export default function titles(state = INITIAL_STATE, action) {
 
     case DELETE_MOVIE:
       return state.filter(title => title.id !== action.movieId);
+
+    case USER_LOGOUT:
+      return INITIAL_STATE;
 
     default:
       return state;
