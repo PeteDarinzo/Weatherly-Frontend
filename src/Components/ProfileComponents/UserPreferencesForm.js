@@ -176,7 +176,7 @@ const UserPreferencesForm = ({ minTemp, maxTemp, units, thunderstorm, drizzle, r
                     onChange={handleToggle}
                     name="overcast" />
                 }
-                label="overcast"
+                label="Overcast"
               />
             </FormGroup>
           </FormControl>

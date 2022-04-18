@@ -80,7 +80,7 @@ const SignupForm = ({ register }) => {
                 id="postal-code"
                 label="Postal Code"
                 variant="outlined"
-                value={formData.zipCode}
+                value={formData.postalCode}
                 onChange={handleChange}
                 fullWidth
                 required />

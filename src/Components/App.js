@@ -95,14 +95,18 @@ function App() {
   /** Register a new user */
 
   async function register(userData) {
-    const { username, password, postalCode, countryCode } = userData;
     try {
       const token = await WeatherlyApi.register(userData);
       localStorage.setItem("weatherlyToken", JSON.stringify(token));
       setUserToken(token);
       history.push("/");
+      dispatch(setSnackbar(true, "success", "Welcome to Weatherly! Head to the profile page to setup your weather preferences."));
     } catch (err) {
-      dispatch(setSnackbar(true, "error", "Username Taken"));
+      if (err[0].includes("Duplicate")) {
+        dispatch(setSnackbar(true, "error", "Username Taken."));
+      } else {
+        dispatch(setSnackbar(true, "error", "Incorrect postal code or country."));
+      }
     }
   }
 
@@ -117,6 +121,7 @@ function App() {
       localStorage.setItem("weatherlyToken", JSON.stringify(token));
       setUserToken(token);
       history.push("/");
+      dispatch(setSnackbar(true, "success", "Welcome back!"));
     } catch (e) {
       dispatch(setSnackbar(true, "error", "Incorrect Username or Password"));
     }

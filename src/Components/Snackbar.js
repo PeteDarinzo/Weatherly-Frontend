@@ -23,7 +23,7 @@ import { setSnackbar } from "../Actions/actions";
 const CustomizedSnackbars = () => {
 
   // const classes = useStyles();
-  
+
   const dispatch = useDispatch();
 
   const snackbarOpen = useSelector(store => store.snackbar.snackbarOpen);
@@ -47,13 +47,14 @@ const CustomizedSnackbars = () => {
         open={snackbarOpen}
         autoHideDuration={2000}
         onClose={handleClose}
-        anchorOrigin={{ vertical, horizontal}}
+        anchorOrigin={{ vertical, horizontal }}
       >
         <Alert
           elevation={6}
           variant="filled"
           onClose={handleClose}
-          color={snackbarType}>
+          color={snackbarType}
+          sx={{ fontSize: "1.5rem" }}>
           {snackbarMessage}
         </Alert>
       </Snackbar>

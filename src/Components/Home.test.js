@@ -13,6 +13,8 @@ it("renders home without crashing", () => {
   );
 });
 
+/** This test passes, but shows failure because of the changing random quote  */
+
 // it("matches the home snapshot", () => {
 //   const { asFragment } = renderWithRedux(
 //     <MemoryRouter>
