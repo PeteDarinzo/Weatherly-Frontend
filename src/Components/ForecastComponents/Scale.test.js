@@ -1,20 +1,21 @@
-import Forecast from "./Forecast";
+import Scale from "./Scale";
+import { render } from '@testing-library/react';
 import { MemoryRouter } from "react-router-dom";
 import renderWithRedux from "../../Helpers/renderWithRedux";
 
-it("renders forecast without crashing", () => {
-  renderWithRedux(
+it("renders scale without crashing", () => {
+  render(
     <MemoryRouter>
-      <Forecast />
+      <Scale compatibility={2} />
     </MemoryRouter>
   );
 });
 
 
-it("matches the forecast snapshot", () => {
+it("matches scale snapshot", () => {
   const { asFragment } = renderWithRedux(
     <MemoryRouter>
-      <Forecast />
+      <Scale compatibility={2} />
     </MemoryRouter>
   );
   expect(asFragment()).toMatchSnapshot();

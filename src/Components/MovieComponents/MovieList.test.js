@@ -1,20 +1,21 @@
-import Forecast from "./Forecast";
+import MovieList from "./MovieList";
 import { MemoryRouter } from "react-router-dom";
 import renderWithRedux from "../../Helpers/renderWithRedux";
 
-it("renders forecast without crashing", () => {
+
+it("renders the movie list without crashing", () => {
   renderWithRedux(
     <MemoryRouter>
-      <Forecast />
+      <MovieList />
     </MemoryRouter>
   );
 });
 
 
-it("matches the forecast snapshot", () => {
+it("matches the movie list snapshot", () => {
   const { asFragment } = renderWithRedux(
     <MemoryRouter>
-      <Forecast />
+      <MovieList  />
     </MemoryRouter>
   );
   expect(asFragment()).toMatchSnapshot();

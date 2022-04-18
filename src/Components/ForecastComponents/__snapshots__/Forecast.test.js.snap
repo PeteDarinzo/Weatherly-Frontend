@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches the forecast snapshot 1`] = `
+<DocumentFragment>
+  <b>
+    Loading forecast
+  </b>
+</DocumentFragment>
+`;

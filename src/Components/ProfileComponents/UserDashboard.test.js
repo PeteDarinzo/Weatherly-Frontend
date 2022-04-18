@@ -1,20 +1,20 @@
-import Forecast from "./Forecast";
 import { MemoryRouter } from "react-router-dom";
 import renderWithRedux from "../../Helpers/renderWithRedux";
+import UserDashboard from "./UserDashboard";
 
-it("renders forecast without crashing", () => {
+it("renders user dashboard without crashing", () => {
   renderWithRedux(
     <MemoryRouter>
-      <Forecast />
+      <UserDashboard updateUser={() => { }} />
     </MemoryRouter>
   );
 });
 
 
-it("matches the forecast snapshot", () => {
+it("matches the user dashboard snapshot", () => {
   const { asFragment } = renderWithRedux(
     <MemoryRouter>
-      <Forecast />
+      <UserDashboard updateUser={() => { }} />
     </MemoryRouter>
   );
   expect(asFragment()).toMatchSnapshot();

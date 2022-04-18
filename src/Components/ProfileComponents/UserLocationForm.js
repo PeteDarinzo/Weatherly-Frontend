@@ -6,8 +6,6 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import { setSnackbar } from "../../Actions/actions";
-import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles({
   box: {
@@ -23,7 +21,6 @@ const useStyles = makeStyles({
 const UserLocationForm = ({ postalCode, countryCode, updateUserLocation }) => {
 
   const classes = useStyles();
-  const dispatch = useDispatch();
 
   const initialState = {
     postalCode,

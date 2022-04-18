@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches the forecast paper snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation12 css-15s4tt4-MuiPaper-root"
+    style="padding: 8px; border: 1px solid black; text-align: center;"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-mhc70k-MuiGrid-root"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-1idn90j-MuiGrid-root"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-1f7e215-MuiTypography-root"
+        >
+          mon
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-1v1tjum-MuiTypography-root"
+        >
+          1/1
+        </p>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2 css-1o7apob-MuiGrid-root"
+      >
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthLg css-1oqqzyl-MuiContainer-root"
+        >
+          <div
+            class="makeStyles-box-2 MuiBox-root css-165t1cv"
+          />
+          <div
+            class="makeStyles-box-2 MuiBox-root css-165t1cv"
+          />
+          <div
+            class="makeStyles-box-2 MuiBox-root css-1u9s4zi"
+          />
+        </div>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-10 css-17p3wh3-MuiGrid-root"
+      >
+        <img
+          alt="cloudy"
+          class="MuiBox-root css-46jsvw"
+          src="http://openweathermap.org/img/wn/@2x.png"
+          style="background-color: lightskyblue;"
+        />
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-qjpmex-MuiTypography-root"
+        >
+          55 °F
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-ee8j7p-MuiTypography-root"
+        >
+          cloudy
+        </p>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

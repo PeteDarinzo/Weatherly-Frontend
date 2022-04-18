@@ -10,7 +10,7 @@ import Forecast from "./ForecastComponents/Forecast";
 import UserDashboard from "./ProfileComponents/UserDashboard";
 import SearchPage from "./SearchComponents/SearchPage";
 
-const Routes = ({ getMovies, searchResults, register, login, loggedIn, saveMovie, removeMovie, username, updateUser }) => {
+const Routes = ({ getMovies, searchResults, register, login, loggedIn, saveMovie, removeMovie, updateUser }) => {
 
   return (
     <Switch>

@@ -10,11 +10,11 @@ it("renders home without crashing", () => {
   );
 });
 
-// it("matches the home snapshot", () => {
-//   const { asFragment } = render(
-//     <MemoryRouter>
-//       <Home />
-//     </MemoryRouter>
-//   );
-//   expect(asFragment()).toMatchSnapshot();
-// });
+it("matches the home snapshot", () => {
+  const { asFragment } = render(
+    <MemoryRouter>
+      <HomeAnon />
+    </MemoryRouter>
+  );
+  expect(asFragment()).toMatchSnapshot();
+});

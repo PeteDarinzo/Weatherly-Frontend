@@ -3,9 +3,10 @@ import React from 'react';
 import Home from "./Home";
 import { render } from '@testing-library/react';
 import { MemoryRouter } from "react-router-dom"
+import renderWithRedux from "../Helpers/renderWithRedux";
 
 it("renders home without crashing", () => {
-  render(
+  renderWithRedux(
     <MemoryRouter>
       <Home />
     </MemoryRouter>
@@ -13,7 +14,7 @@ it("renders home without crashing", () => {
 });
 
 // it("matches the home snapshot", () => {
-//   const { asFragment } = render(
+//   const { asFragment } = renderWithRedux(
 //     <MemoryRouter>
 //       <Home />
 //     </MemoryRouter>

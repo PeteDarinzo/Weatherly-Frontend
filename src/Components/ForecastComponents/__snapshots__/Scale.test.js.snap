@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches scale snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiContainer-root MuiContainer-maxWidthLg css-1oqqzyl-MuiContainer-root"
+  >
+    <div
+      class="makeStyles-box-2 MuiBox-root css-165t1cv"
+    />
+    <div
+      class="makeStyles-box-2 MuiBox-root css-rgze7w"
+    />
+    <div
+      class="makeStyles-box-2 MuiBox-root css-1u9s4zi"
+    />
+  </div>
+</DocumentFragment>
+`;

@@ -175,7 +175,6 @@ function App() {
           loggedIn={userToken}
           saveMovie={saveMovie}
           removeMovie={removeMovie}
-          username={userData.username}
           updateUser={updateUser}
         />
       </Paper>

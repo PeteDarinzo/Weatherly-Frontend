@@ -1,0 +1,179 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render matches the router snapshot when logged in 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiContainer-root MuiContainer-maxWidthLg css-1oqqzyl-MuiContainer-root"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-1idn90j-MuiGrid-root"
+      >
+        <h2
+          class="MuiTypography-root MuiTypography-h2 css-qq3owz-MuiTypography-root"
+        >
+          WELCOME TO WEATHERLY
+        </h2>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-1osj8n2-MuiGrid-root"
+      >
+        <h5
+          class="MuiTypography-root MuiTypography-h5 css-1jcyw1h-MuiTypography-root"
+        >
+          What is it?
+        </h5>
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-zpphrz-MuiTypography-root"
+        >
+          Your time is valuable.
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-zpphrz-MuiTypography-root"
+        >
+          Don't scroll endlessly looking for something to watch on a sunny day.
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-zpphrz-MuiTypography-root"
+        >
+          Keep your "to-watch" list close at hand.
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-zpphrz-MuiTypography-root"
+        >
+          Let the app find the next inclement weather day for you.
+        </p>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-1idn90j-MuiGrid-root"
+      >
+        <div
+          class="MuiBox-root css-0"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-fksj50-MuiTypography-root"
+          >
+            New to Weatherly?
+            <a
+              class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root  css-19skcmy-MuiButtonBase-root-MuiButton-root"
+              href="/signup"
+              tabindex="0"
+            >
+              Signup
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </a>
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-fksj50-MuiTypography-root"
+          >
+            Already a user?
+            <a
+              class="MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root  css-1do0yfw-MuiButtonBase-root-MuiButton-root"
+              href="/login"
+              tabindex="0"
+            >
+              Login
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`render matches the router snapshot when logged out 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiContainer-root MuiContainer-maxWidthLg css-1oqqzyl-MuiContainer-root"
+  >
+    <div
+      class="MuiGrid-root MuiGrid-container css-11lq3yg-MuiGrid-root"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-1idn90j-MuiGrid-root"
+      >
+        <h2
+          class="MuiTypography-root MuiTypography-h2 css-qq3owz-MuiTypography-root"
+        >
+          WELCOME TO WEATHERLY
+        </h2>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-1osj8n2-MuiGrid-root"
+      >
+        <h5
+          class="MuiTypography-root MuiTypography-h5 css-1jcyw1h-MuiTypography-root"
+        >
+          What is it?
+        </h5>
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-zpphrz-MuiTypography-root"
+        >
+          Your time is valuable.
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-zpphrz-MuiTypography-root"
+        >
+          Don't scroll endlessly looking for something to watch on a sunny day.
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-zpphrz-MuiTypography-root"
+        >
+          Keep your "to-watch" list close at hand.
+        </p>
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-zpphrz-MuiTypography-root"
+        >
+          Let the app find the next inclement weather day for you.
+        </p>
+      </div>
+      <div
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 css-1idn90j-MuiGrid-root"
+      >
+        <div
+          class="MuiBox-root css-0"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-fksj50-MuiTypography-root"
+          >
+            New to Weatherly?
+            <a
+              class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root  css-19skcmy-MuiButtonBase-root-MuiButton-root"
+              href="/signup"
+              tabindex="0"
+            >
+              Signup
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </a>
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-fksj50-MuiTypography-root"
+          >
+            Already a user?
+            <a
+              class="MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root  css-1do0yfw-MuiButtonBase-root-MuiButton-root"
+              href="/login"
+              tabindex="0"
+            >
+              Login
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
