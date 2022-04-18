@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 import NavBar from "./NavBar";
 import Routes from "./Routes";
+import Spinner from "./Spinner";
 import WeatherlyApi from './Api';
 import jwt_decode from "jwt-decode";
 import { fetchForecastFromAPI, saveUserData, sendMovieToAPI, fetchTitlesFromAPI, deleteFromWatchList, resetStore } from '../Actions/actions';
@@ -163,7 +164,13 @@ function App() {
     dispatch(saveUserData(updatedUser));
   }
 
-  if (isLoading) return (<b>loading</b>)
+  if (isLoading) return (
+    <ThemeProvider theme={theme}>
+      <Paper sx={{ minHeight: "100vh" }}>
+        <Spinner />
+      </Paper>
+    </ThemeProvider>
+  );
 
   return (
     <ThemeProvider theme={theme}>
