@@ -1,4 +1,14 @@
 
+/** Generate an integer to how compatible a single day's forecast is with the user's preferences
+ * 
+ * Condition codes vary based on weather condition (cloudy, rainy, etc)
+ * 
+ * Check the condition codes and temperature against what a user prefers
+ * 
+ * Compatibility is ordered as such: temperatue & conditions > conditions > temperature
+ * 
+ */
+
 function determineMatch(day, userPrefs) {
   let conditionsMet;
   let tempMet;
@@ -24,10 +34,12 @@ function determineMatch(day, userPrefs) {
 
   if (conditionsMet && tempMet) {
     return 3;
-  } else if (conditionsMet || tempMet) {
+  } else if (conditionsMet) {
     return 2;
-  } else {
+  } else if (tempMet) {
     return 1;
+  } else {
+    return 0;
   }
 }
 
