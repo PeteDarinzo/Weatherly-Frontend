@@ -6,6 +6,7 @@ import { makeStyles } from "@mui/styles";
 import { setSnackbar } from "../Actions/actions";
 
 
+/** Styling */
 // const useStyles = makeStyles(theme => ({
 //   root: {
 //     width: "100%",
@@ -15,11 +16,16 @@ import { setSnackbar } from "../Actions/actions";
 //   }
 // }));
 
+/** Snackbar/Redux implementation adapted from Anthony Sistilli Youtube tutorial
+ * https://www.youtube.com/watch?v=CVnSrLZ_HaQ
+*/
 
 const CustomizedSnackbars = () => {
 
   // const classes = useStyles();
+  
   const dispatch = useDispatch();
+
   const snackbarOpen = useSelector(store => store.snackbar.snackbarOpen);
   const snackbarType = useSelector(store => store.snackbar.snackbarType);
   const snackbarMessage = useSelector(store => store.snackbar.snackbarMessage);

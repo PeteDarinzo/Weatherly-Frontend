@@ -12,7 +12,6 @@ import Grid from '@mui/material/Grid';
 
 const HomeAnon = () => {
 
-
   return (
     <Container>
       <Grid container>
@@ -27,9 +26,7 @@ const HomeAnon = () => {
           <Typography sx={{ textAlign: "left" }}>Let the app find the next inclement weather day for you.</Typography>
         </Grid>
         <Grid item xs={12}>
-          <Box
-          // sx={{ width: "250px", backgroundColor: "" }}
-          >
+          <Box>
             <Typography
               sx={{ margin: "10px", textAlign: "left" }}>
               New to Weatherly?

@@ -13,6 +13,9 @@ import Stack from '@mui/material/Stack';
 import ListItem from '@mui/material/ListItem';
 
 /**
+ * Display a random weather proverb on the logged in landing page.
+ * 
+ * Proverbs taken from the following sources:
  * https://www.almanac.com/content/weather-sayings-and-their-meanings
  * https://www.artofmanliness.com/skills/outdoor-survival/22-old-weather-proverbs-that-are-actually-true/
  * https://www.nps.gov/grte/learn/education/classrooms/upload/Weather-Lore-Sayings.pdf
@@ -20,6 +23,7 @@ import ListItem from '@mui/material/ListItem';
  * https://www.readwritethink.org/sites/default/files/resources/lesson_images/lesson775/CollectionSayings.pdf
  * https://cottagelife.com/outdoors/8-mostly-reliable-weather-proverbs/
  */
+
 const WEATHER_PROVERBS = [
   "Red sky at night, sailors delight. Red sky in morning, sailors take warning.",
   "Clear Moon, frost soon.",
@@ -51,7 +55,8 @@ const Home = () => {
   const userData = useSelector(store => store.user);
   const titles = useSelector(store => store.titles);
 
-  const abbreviatedForecast = forecast.slice(1, 4);
+  // show upcoming three day forecast and four recent'y saved movies on landing page
+  const abbreviatedForecast = forecast.slice(1, 4); 
   const titleSelection = titles.slice(-4);
 
   let proverbNum = Math.floor(Math.random() * WEATHER_PROVERBS.length)
@@ -133,6 +138,7 @@ const Home = () => {
               SEE ALL MOVIES</Button>
           </Grid>
         </ListItem>
+        
       </Stack>
     </Container>
   );

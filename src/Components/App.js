@@ -11,7 +11,6 @@ import Paper from '@mui/material/Paper';
 import { green } from '@mui/material/colors';
 import CustomizedSnackbars from './Snackbar';
 import { setSnackbar } from "../Actions/actions";
-
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
@@ -36,6 +35,8 @@ function App() {
   const [userData, setUserData] = useState({});
   const [searchResults, setSearchResults] = useState([]);
 
+  /** Load user token from local storage if available */
+
   useEffect(() => {
     if (localStorage.getItem("weatherlyToken")) {
       const token = JSON.parse(localStorage.getItem("weatherlyToken"));
@@ -43,6 +44,8 @@ function App() {
       setUserToken(token);
     }
   }, []);
+
+  /** Load a user's data (username and profile settings) */
 
   useEffect(() => {
 
@@ -57,6 +60,8 @@ function App() {
     if (userToken) loadUserData();
 
   }, [userToken]);
+
+  /** Load a user's watchlist and get forecast */
 
   useEffect(() => {
 
@@ -87,13 +92,6 @@ function App() {
   }, [userData]);
 
 
-  /** Search OMDB for movies */
-  async function getMovies(title) {
-    const res = await WeatherlyApi.searchMoviesByTitle(title);
-    setSearchResults(res.Search);
-  }
-
-
   /** Register a new user */
 
   async function register(userData) {
@@ -108,6 +106,7 @@ function App() {
     }
   }
 
+  /** Login an existing user */
   async function login(user) {
     try {
       const userObj = {
@@ -123,11 +122,21 @@ function App() {
     }
   }
 
+  /** Logout a user */
   function logout() {
     localStorage.removeItem("weatherlyToken");
     setUserToken("");
     dispatch(setSnackbar(true, "success", "Logged Out!"));
   }
+
+  /** Search OMDB for movies */
+
+  async function getMovies(title) {
+    const res = await WeatherlyApi.searchMoviesByTitle(title);
+    setSearchResults(res.Search);
+  }
+
+  /** Save a movie, flash an alert for success, or warning if already saved */
 
   async function saveMovie(movie) {
     try {
@@ -138,11 +147,14 @@ function App() {
     }
   }
 
+  /** Remove a movie from user's watchlist */
+
   function removeMovie(movieId) {
     dispatch(deleteFromWatchList(userData.username, movieId));
     dispatch(setSnackbar(true, "success", "Deleted!"));
   }
 
+  /** Update a user's profile or weather preferences */
   async function updateUser(data) {
     const updatedUser = await WeatherlyApi.updateUser(userData.username, data);
     dispatch(saveUserData(updatedUser));

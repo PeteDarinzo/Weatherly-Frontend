@@ -28,7 +28,7 @@ const Routes = ({ getMovies, searchResults, register, login, loggedIn, saveMovie
 
       <Route exact path="/movies">
         {loggedIn
-          ? <MovieList username={username} />
+          ? <MovieList />
           : <Redirect to="/login" />}
       </Route>
 

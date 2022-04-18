@@ -20,7 +20,10 @@ const DAYS_OF_WEEK = new CircularlyLinkedList(["Sun", "Mon", "Tue", "Wed", "Thu"
 const OPEN_WEATHER_URL = "https://api.openweathermap.org/data/2.5/onecall?"
 
 
-/*** SAVE MOVIE ***/
+/* SAVE MOVIE
+ * 
+ * Saves a movie in the database, then adds to the user's watchlist
+ */
 
 export function sendMovieToAPI(movie, username) {
   const movieObj = {
@@ -35,6 +38,8 @@ export function sendMovieToAPI(movie, username) {
   }
 }
 
+/** Add movie title to the titles reducer */
+
 function saveMovie(movie) {
   return {
     type: SAVE_MOVIE,
@@ -42,7 +47,10 @@ function saveMovie(movie) {
   }
 }
 
-/*** FETCH TITLE ***/
+/** FETCH TITLES 
+*
+* Fetch a user's watchlist from the database
+*/
 
 export function fetchTitlesFromAPI(username) {
   return async function (dispatch) {
@@ -51,6 +59,8 @@ export function fetchTitlesFromAPI(username) {
   }
 }
 
+/** Save titles to the titles reducer */
+
 function getTitles(titles) {
   return {
     type: FETCH_TITLES,
@@ -58,7 +68,10 @@ function getTitles(titles) {
   }
 }
 
-/*** FETCH MOVIE ***/
+/** FETCH MOVIE
+ *
+ * Query the database for a movie from the user's watchlist, by id 
+ */
 
 export function fetchMovieFromAPI(movieId) {
   return async function (dispatch) {
@@ -67,6 +80,8 @@ export function fetchMovieFromAPI(movieId) {
   }
 }
 
+/** Save movie details the movies reducer */
+
 function getMovie(movie) {
   return {
     type: FETCH_MOVIE,
@@ -74,30 +89,30 @@ function getMovie(movie) {
   }
 }
 
-/*** DELETE MOVIE ***/
-
-/**
- * DELETE second param is options
- * https://masteringjs.io/tutorials/axios/delete-with-body#:~:text=To%20send%20a%20request%20body,should%20set%20the%20data%20option.&text=Remember%20that%20the%202nd%20parameter,like%20you%20can%20with%20axios.
+/** DELETE MOVIE
+ * 
+ * Remove a movie from a user's watchlist
+ *  
  */
 
 export function deleteFromWatchList(username, movieId) {
   return async function (dispatch) {
-    // await axios.delete(`${API_URL}/users/${userId}/movies`, { data: { movieId } });
     WeatherlyApi.removeFromWatchList(username, movieId)
     dispatch(deleteMovie(movieId));
   }
-
-  function deleteMovie(movieId) {
-    return {
-      type: DELETE_MOVIE,
-      movieId
-    }
-  }
-
 }
 
-/** FETCH FORECAST */
+function deleteMovie(movieId) {
+  return {
+    type: DELETE_MOVIE,
+    movieId
+  }
+}
+
+/** FETCH FORECAST 
+ * 
+ * Fetch forecast, add weekday and data
+*/
 
 export function fetchForecastFromAPI(lat, lon, units) {
   return async function (dispatch) {
@@ -124,6 +139,8 @@ export function fetchForecastFromAPI(lat, lon, units) {
   }
 }
 
+/** Save to the forecast reducer */
+
 function getForecast(forecast) {
   return {
     type: GET_FORECAST,
@@ -131,7 +148,10 @@ function getForecast(forecast) {
   }
 }
 
-/** UPDATE USER */
+/** UPDATE USER 
+ * 
+ * Update a user's profile
+*/
 
 export function saveUserData(userData) {
   return {
@@ -140,7 +160,11 @@ export function saveUserData(userData) {
   }
 }
 
-/** SET SNACKBAR */
+/** SET SNACKBAR
+ * 
+ * Set the snackbar to open from any component
+ * Includes snackbar color (alert color) and message 
+ */
 
 export function setSnackbar(snackbarOpen, snackbarType = "success", snackbarMessage = "") {
   return {

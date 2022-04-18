@@ -5,17 +5,11 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { setSnackbar } from "../../Actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 
 const SearchCard = ({ movie, saveMovie }) => {
 
-  const titles = useSelector(store => store.titles);
-
-  const dispatch = useDispatch();
-
   function handleClick(e) {
-      // dispatch(setSnackbar(true, "success", "Movie saved!"));
       saveMovie(movie);
   }
 

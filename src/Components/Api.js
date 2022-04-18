@@ -19,7 +19,7 @@ class WeatherlyApi {
     console.debug("API Call:", endpoint, data, method);
 
     const url = `${BASE_URL}/${endpoint}`;
-    const headers = { Authorization: `Bearer ${WeatherlyApi.token}` }
+    const headers = { Authorization: `Bearer ${WeatherlyApi.token}` } // set token for each request
     // if sending get request, set params to data, other params is an empty obj
     // this ensures get data is sent in the url
     // and post sends data as json

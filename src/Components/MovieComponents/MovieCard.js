@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-const MovieCard = ({ id, title, img, year }) => {
+const MovieCard = ({ id, title, img }) => {
   return (
     <Card sx={{ height: '100%', backgroundColor: "#2b2b2b" }}>
       <CardActionArea

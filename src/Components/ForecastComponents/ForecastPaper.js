@@ -1,12 +1,7 @@
 import React from "react";
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Scale from "./Scale";
 
@@ -17,7 +12,7 @@ const styles = {
   }
 }
 
-const ForecastPaper = ({ day, date, description, min, max, feelsLike, icon, units, compatibility }) => {
+const ForecastPaper = ({ day, date, description, feelsLike, icon, units, compatibility }) => {
   return (
     <Paper
       elevation={12}

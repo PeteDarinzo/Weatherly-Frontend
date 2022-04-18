@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import MovieCard from "./MovieCard";
 import Container from '@mui/material/Container';
-import Stack from '@mui/material/Stack';
-import { useSelector, useDispatch } from "react-redux";
-import { fetchTitlesFromAPI } from "../../Actions/actions";
+import { useSelector } from "react-redux";
 import Grid from '@mui/material/Grid';
 import { makeStyles } from "@mui/styles";
 import { Typography } from "@mui/material";
-import { ConstructionOutlined } from "@mui/icons-material";
 
 const useStyles = makeStyles({
   container: {
