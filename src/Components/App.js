@@ -136,8 +136,8 @@ function App() {
   /** Search OMDB for movies */
 
   async function getMovies(title) {
-    const res = await WeatherlyApi.searchMoviesByTitle(title);
-    setSearchResults(res.Search);
+      const res = await WeatherlyApi.searchMoviesByTitle(title);
+      setSearchResults(res.Search);
   }
 
   /** Save a movie, flash an alert for success, or warning if already saved */

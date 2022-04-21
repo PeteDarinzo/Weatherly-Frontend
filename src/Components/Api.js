@@ -39,8 +39,8 @@ class WeatherlyApi {
   /** search movies */
 
   static async searchMoviesByTitle(title) {
-    let res = await this.request('movies/title', { title });
-    return res;
+      let res = await this.request('movies/title', { title });
+      return res;
   }
 
   static async searchMoviesById(movieId) {
