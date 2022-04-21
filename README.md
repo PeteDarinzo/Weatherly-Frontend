@@ -2,7 +2,7 @@
 
 ## Developer: Peter Darinzo
 
-### View the app: 
+### View the app here: https://fast-authority.surge.sh/
 
 [Navigation](#navigation)  
 [Installation](#installation)  
